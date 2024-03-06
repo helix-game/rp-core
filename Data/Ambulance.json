@@ -1,0 +1,23 @@
+{
+    "Vehicle": {
+        "name": "Ambulance",
+        "asset": "helix::BP_XDrive_Veh_40",
+        "doors": [
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(100, -75, 75)",
+                "seatLoc": "Vector(90, -35, 80)",
+                "seatRot": "Rotator(-10, 0, 0)",
+                "triggerRadius": 75
+            },
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(-100, 75, 75)",
+                "seatLoc": "Vector(90, 35, 80)",
+                "seatRot": "Rotator(-10, 0, 0)",
+                "triggerRadius": 75
+            }
+        ],
+        "maxfuel": 25
+    }
+}

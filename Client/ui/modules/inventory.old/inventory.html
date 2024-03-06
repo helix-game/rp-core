@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory</title>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <link rel="stylesheet" href="../../global.css">
+  <link rel="stylesheet" href="./inventory.css">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+  <script defer src="./inventory.js"></script>
+</head>
+
+<body>
+  <div id="screen">
+    <div class="inventory-wrapper">
+      <aside class="divide-modal">
+        <figure class="content">
+          <figure class="icon"></figure>
+          <h2 class="subtitle">number from <em>1</em> TO <em>215</em></h2>
+          <h1 class="title">enter amount to divide</h1>
+          <figure class="actions-row quick-actions">
+            <button id="min-amount" class="action">min</button>
+            <button id="half-amount" class="action">50%</button>
+            <button id="max-amount" class="action">max</button>
+          </figure>
+          <figure class="input">
+            <button id="decrease">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.41304 13.6246C8.89493 14.1515 9.4463 14.2691 10.0672 13.9773C10.6891 13.6867 11 13.167 11 12.4182V3.84845C11 3.09964 10.6891 2.57991 10.0672 2.28926C9.4463 1.9975 8.89493 2.11509 8.41304 2.64203L4.45652 6.96849C4.30435 7.13489 4.19022 7.31516 4.11413 7.50929C4.03804 7.70343 4 7.91143 4 8.1333C4 8.35517 4.03804 8.56317 4.11413 8.75731C4.19022 8.95144 4.30435 9.13171 4.45652 9.29811L8.41304 13.6246Z"
+                  fill="black" />
+              </svg>
+            </button>
+            <figcaption class="label">69</figcaption>
+            <button id="increase">
+              <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.58696 13.6246C7.10507 14.1515 6.5537 14.2691 5.93283 13.9773C5.31094 13.6867 5 13.167 5 12.4182V3.84845C5 3.09964 5.31094 2.57991 5.93283 2.28926C6.5537 1.9975 7.10507 2.11509 7.58696 2.64203L11.5435 6.96849C11.6957 7.13489 11.8098 7.31516 11.8859 7.50929C11.962 7.70343 12 7.91143 12 8.1333C12 8.35517 11.962 8.56317 11.8859 8.75731C11.8098 8.95144 11.6957 9.13171 11.5435 9.29811L7.58696 13.6246Z"
+                  fill="black" />
+              </svg>
+            </button>
+          </figure>
+          <figure class="actions-row actions">
+            <button id="cancel" class="action-large">
+              cancel
+            </button>
+            <button id="done" class="action-large action-positive">
+              done
+            </button>
+          </figure>
+        </figure>
+        <!-- <figure class="overlay">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </figure> -->
+        <figure class="darken"></figure>
+      </aside>
+
+      <div class="context-menu">
+        <header class="header">
+          <h1 class="title">name of the prop</h1>
+          <h2 class="subtitle">
+            Allows you to hunt and catch people larping ingame with great
+            precision and accuracy.
+          </h2>
+          <h3 class="rarity">HIGH RARITY</h3>
+          <figure class="weight">42.69 LB</figure>
+        </header>
+        <figure class="actions">
+          <button class="action" data-type="use-action">
+            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon"
+              style="height: 22px; width: 18.5px">
+              <path
+                d="M8.02084 0.166656C8.23632 0.166656 8.44299 0.252259 8.59536 0.404632C8.74773 0.557005 8.83334 0.763668 8.83334 0.979156V3.68749C8.83334 3.90298 8.74773 4.10964 8.59536 4.26201C8.44299 4.41439 8.23632 4.49999 8.02084 4.49999C7.80535 4.49999 7.59868 4.41439 7.44631 4.26201C7.29394 4.10964 7.20834 3.90298 7.20834 3.68749V0.979156C7.20834 0.763668 7.29394 0.557005 7.44631 0.404632C7.59868 0.252259 7.80535 0.166656 8.02084 0.166656ZM2.8425 2.30082C2.99485 2.14867 3.20136 2.0632 3.41667 2.0632C3.63198 2.0632 3.83849 2.14867 3.99084 2.30082L5.88667 4.19666C5.9665 4.27104 6.03052 4.36074 6.07493 4.46041C6.11934 4.56007 6.14322 4.66766 6.14514 4.77676C6.14707 4.88585 6.127 4.99422 6.08614 5.09539C6.04527 5.19656 5.98445 5.28846 5.90729 5.36561C5.83014 5.44277 5.73824 5.50359 5.63707 5.54446C5.5359 5.58532 5.42753 5.60539 5.31844 5.60346C5.20934 5.60154 5.10175 5.57766 5.00209 5.53325C4.90242 5.48884 4.81272 5.42482 4.73834 5.34499L2.8425 3.44916C2.69035 3.29681 2.60488 3.0903 2.60488 2.87499C2.60488 2.65968 2.69035 2.45317 2.8425 2.30082V2.30082ZM13.1992 2.30082C13.3513 2.45317 13.4368 2.65968 13.4368 2.87499C13.4368 3.0903 13.3513 3.29681 13.1992 3.44916L11.3033 5.34499C11.229 5.42482 11.1393 5.48884 11.0396 5.53325C10.9399 5.57766 10.8323 5.60154 10.7232 5.60346C10.6141 5.60539 10.5058 5.58532 10.4046 5.54446C10.3034 5.50359 10.2115 5.44277 10.1344 5.36561C10.0572 5.28846 9.9964 5.19656 9.95554 5.09539C9.91467 4.99422 9.8946 4.88585 9.89653 4.77676C9.89845 4.66766 9.92233 4.56007 9.96674 4.46041C10.0111 4.36074 10.0752 4.27104 10.155 4.19666L12.0508 2.30082C12.2032 2.14867 12.4097 2.0632 12.625 2.0632C12.8403 2.0632 13.0468 2.14867 13.1992 2.30082V2.30082ZM0.708336 7.47916C0.708336 7.26367 0.793938 7.05701 0.946311 6.90463C1.09868 6.75226 1.30535 6.66666 1.52084 6.66666H4.22917C4.44466 6.66666 4.65132 6.75226 4.80369 6.90463C4.95607 7.05701 5.04167 7.26367 5.04167 7.47916C5.04167 7.69464 4.95607 7.90131 4.80369 8.05368C4.65132 8.20605 4.44466 8.29166 4.22917 8.29166H1.52084C1.30535 8.29166 1.09868 8.20605 0.946311 8.05368C0.793938 7.90131 0.708336 7.69464 0.708336 7.47916ZM7.20834 8.27757C7.20834 7.05666 8.6405 6.39799 9.56675 7.19316L18.7328 15.0495C19.7187 15.8945 19.1575 17.5097 17.8608 17.5628L13.7008 17.7286C13.2533 17.7459 12.833 17.9452 12.534 18.2778L9.70217 21.4433C8.82792 22.4216 7.20834 21.8019 7.20834 20.49V8.27866V8.27757Z"
+                fill="currentColor" />
+            </svg>
+
+            use
+          </button>
+          <button class="action" data-type="use-divide">
+            <svg width="30" height="14" viewBox="0 0 30 14" fill="none" xmlns="http://www.w3.org/2000/svg"
+              style="height: 14px; width: 30px; margin-right: 14px" class="icon">
+              <path
+                d="M17.5556 14H28.4444C29.3023 14 30 13.3023 30 12.4444V1.55556C30 0.697667 29.3023 0 28.4444 0H17.5556C16.6977 0 16 0.697667 16 1.55556V6.223H21.4429V5.24615C21.4429 4.39831 22.4317 3.93516 23.0831 4.47793L25.1877 6.23178C25.6674 6.63158 25.6674 7.36843 25.1877 7.76822L23.0831 9.52207C22.4317 10.0648 21.4429 9.60168 21.4429 8.75385V7.77856H16V12.4444C16 13.3023 16.6977 14 17.5556 14Z"
+                fill="currentColor" />
+              <path
+                d="M12.4444 14H1.55556C0.697666 14 0 13.3023 0 12.4444V1.55556C0 0.697667 0.697666 0 1.55556 0H12.4444C13.3023 0 14 0.697667 14 1.55556V6.223H8.55711V5.24615C8.55711 4.39831 7.56825 3.93516 6.91693 4.47793L4.81231 6.23178C4.33255 6.63158 4.33256 7.36843 4.81231 7.76822L6.91693 9.52207C7.56826 10.0648 8.55711 9.60168 8.55711 8.75385V7.77856H14V12.4444C14 13.3023 13.3023 14 12.4444 14Z"
+                fill="currentColor" />
+            </svg>
+            divide
+          </button>
+          <button class="action" data-type="use-drop">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+              style="height: 24px; width: 24px" class="icon">
+              <path
+                d="M20.37 8.91L19.37 10.64L7.24 3.64L8.24 1.91L11.28 3.66L12.64 3.29L16.97 5.79L17.34 7.16L20.37 8.91ZM6 19V7H11.07L18 11V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H8C7.46957 21 6.96086 20.7893 6.58579 20.4142C6.21071 20.0391 6 19.5304 6 19Z"
+                fill="currentColor" />
+            </svg>
+            drop
+          </button>
+        </figure>
+      </div>
+
+      <main>
+        <h1 class="title"><em>your</em> inventory</h1>
+        <section class="row">
+          <aside data-inventory-type="slots" data-inventory="player-inventory" class="fast-slots">
+            <div class="title-wrapper">
+              <h2 class="title">fast slots</h2>
+            </div>
+            <figure class="slots-large">
+              <div class="slot">
+                <figure class="slot-content">
+                  <figure class="slot-icon" style="background-image: url(./assets/icons/camera.png)"></figure>
+                  <figure class="label">1</figure>
+                  <figcaption class="slot-number">
+                    <object data="./assets/icons/one-stroke.svg" type="svg"></object>
+                  </figcaption>
+                </figure>
+              </div>
+<<<<<<< Updated upstream
+              <div class="slot">
+                <figure class="slot-content">
+                  <figure class="slot-icon" style="background-image: url(./assets/icons/camera.png)"></figure>
+                  <figure class="label">2</figure>
+                  <figcaption class="slot-number">2</figcaption>
+=======
+          
+              <main>
+                <h1 class="title"><em>your</em> inventory</h1>
+                <section class="row">
+                  <aside data-inventory-type="slots" data-inventory="player-inventory" class="fast-slots">
+                    <div class="title-wrapper">
+                      <h2 class="title">fast slots</h2>
+                    </div>
+                    <figure class="slots-large">
+                      <div class="slot">
+                        <figure class="slot-content">
+                          <figure
+                            class="slot-icon"
+                            style="background-image: url(./assets/icons/camera.png)"
+                          ></figure>
+                          <figure class="label">1</figure>
+                          <figcaption class="slot-number">
+                            <object data="./assets/icons/one-stroke.svg" type="svg"></object>
+                          </figcaption>
+                        </figure>
+                      </div>
+                      <div class="slot">
+                        <figure class="slot-content">
+                          <figure
+                            class="slot-icon"
+                            style="background-image: url(./assets/icons/camera.png)"
+                          ></figure>
+                          <figure class="label">2</figure>
+                          <figcaption class="slot-number">2</figcaption>
+                        </figure>
+                      </div>
+                      <div class="slot slot-empty">
+                        <figure class="slot-content">
+                          <figure class="slot-icon"></figure>
+                          <figure class="label"></figure>
+                          <figcaption class="slot-number">3</figcaption>
+                        </figure>
+                      </div>
+                      <div class="slot slot-empty">
+                        <figure class="slot-content">
+                          <figure class="slot-icon"></figure>
+                          <figure class="label"></figure>
+                          <figcaption class="slot-number">4</figcaption>
+                        </figure>
+                      </div>
+                      <div class="slot slot-empty">
+                        <figure class="slot-content">
+                          <figure class="slot-icon"></figure>
+                          <figure class="label"></figure>
+                          <figcaption class="slot-number">5</figcaption>
+                        </figure>
+                      </div>
+                    </figure>
+                  </aside>
+                  <section data-inventory-type="slots" data-inventory="player-inventory" class="primary">
+                    <figure class="group pockets">
+                      <h2 class="title"><span class="icon"></span>pockets</h2>
+                      <figure class="slots">              
+                        <figure class="slot">
+                          <figure
+                            class="slot-icon"
+                            style="background-image: url(./assets/icons/camera.png)"
+                          ></figure>
+                          <figcaption class="label">1</figcaption>
+                          <span class="notch"></span>
+                        </figure>
+                        <figure class="slot">
+                          <figure
+                            class="slot-icon"
+                            style="background-image: url(./assets/icons/bg.png)"
+                          ></figure>
+                          <figcaption class="label">2</figcaption>
+                          <span class="notch"></span>
+                        </figure>
+                        <figure class="slot slot-empty">
+                          <figure
+                            class="slot-icon"
+                            style="background-image: url(./assets/icons/bg.png)"
+                          ></figure>
+                          <figcaption class="label">2</figcaption>
+                          <span class="notch"></span>
+                        </figure>
+                        <figure class="slot slot-empty">
+                          <figure class="slot-icon"></figure>
+                          <figcaption class="label"></figcaption>
+                          <span class="notch"></span>
+                        </figure>
+                        <figure class="slot slot-locked">
+                          <figure class="icon"></figure>
+                          <span class="notch"></span>
+                        </figure>
+                        <figure class="slot slot-locked">
+                          <figure class="icon"></figure>
+                          <span class="notch"></span>
+                        </figure>
+                      </figure>
+                    </figure>
+                    <figure class="group backpack">
+                      <h2 class="title"><span class="icon"></span>backpack</h2>
+
+                      <div class="scroller">
+                        <div class="notice">
+                          <div class="icon"></div>
+                          <h2 class="title">having a backpack <em>level 3</em></h2>
+                          <p class="description">
+                            Opens all slots and nothing can fall out of the backpack
+                          </p>
+                        </div>
+                        
+                        <!-- Slots go here -->
+                      </div>
+                    </figure>
+                  </section>
+                  <aside class="secondary" data-inventory="player-stats" style="/* display: none */">
+                    <section data-inventory-type="outfit" data-inventory="outfit" class="group outfit" style="display: none;">
+                      <h2 class="title"><span class="icon"></span>outfit</h2>
+                      <div class="divide">
+                        <div class="slots-wrapper">
+                        </div>
+                        <div class="background">
+                          <img src="./assets/icons/man.svg" />
+                        </div>
+                      </div>
+                    </section>
+                    <section data-inventory-type="equipment" data-inventory="equipment" class="group equipment" style="display: none;">
+                      <h2 class="title"><span class="icon"></span>equipment</h2>
+                      <figure class="slots">
+                      </figure>
+                    </section>
+                    <section class="group nearby" style="display: block">
+                      <h2 class="title">nearby inventories</h2>
+                      <figure class="inventory-groups">
+                        <button class="inventory-group" disabled>
+                          <header class="group-header">
+                            <figure class="details">
+                              <figure class="icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </figure>
+                              <figure class="name">
+                                <h2 class="title">Car Trunk</h2>
+                                <figcaption class="subtitle">CTRUNK0001</figcaption>
+                              </figure>
+                            </figure>
+                            <figure class="weight">
+                              <figure class="details">
+                                <figcaption class="total">16.5 lb</figcaption>
+                                <figcaption class="tare">/ 50 t</figcaption>
+                              </figure>
+                              <figure class="icon"></figure>
+                            </figure>
+                          </header>
+                        </button>
+                        <button class="inventory-group">
+                          <header class="group-header">
+                            <figure class="details">
+                              <figure class="icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </figure>
+                              <figure class="name">
+                                <h2 class="title">Car Trunk</h2>
+                                <figcaption class="subtitle">CTRUNK0001</figcaption>
+                              </figure>
+                            </figure>
+                            <figure class="weight">
+                              <figure class="details">
+                                <figcaption class="total">16.5 lb</figcaption>
+                                <figcaption class="tare">/ 50 t</figcaption>
+                              </figure>
+                              <figure class="icon"></figure>
+                            </figure>
+                          </header>
+                          <div class="group-contents">
+                            <figure class="slots-slim">
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                            </figure>
+                            <figure class="slots-slim">
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                            </figure>
+                          </div>
+                        </button>
+                        <button class="inventory-group active">
+                          <header class="group-header">
+                            <figure class="details">
+                              <figure class="icon">
+                                <svg
+                                  width="20"
+                                  height="20"
+                                  viewBox="0 0 20 20"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                                    fill="currentColor"
+                                  />
+                                </svg>
+                              </figure>
+                              <figure class="name">
+                                <h2 class="title">Car Trunk</h2>
+                                <figcaption class="subtitle">CTRUNK0001</figcaption>
+                              </figure>
+                            </figure>
+                            <figure class="weight">
+                              <figure class="details">
+                                <figcaption class="total">16.5 lb</figcaption>
+                                <figcaption class="tare">/ 50 t</figcaption>
+                              </figure>
+                              <figure class="icon"></figure>
+                            </figure>
+                          </header>
+                          <div class="group-contents">
+                            <figure class="slots-slim">
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                            </figure>
+                            <figure class="slots-slim">
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                              <figure class="slot-slim"></figure>
+                            </figure>
+                          </div>
+                        </button>
+                      </figure>
+                    </section>
+                  </aside>
+                </section>
+              </main>
+          
+              <div class="weight">
+                <figure class="graph">
+                  <div class="ring"></div>
+                  <svg class="indicator" viewBox="0 0 50 50">
+                    <circle
+                      class="path"
+                      cx="25"
+                      cy="25"
+                      r="24.35"
+                      stroke="white"
+                      fill="none"
+                      stroke-width="1.3"
+                      stroke-linecap="round"
+                      stroke-dasharray="112 149"
+                      stroke-dashoffset="112"
+                      transform="rotate(140, 25, 25)"
+                    />
+                  </svg>
+                  <figure class="icon">
+                    <span></span>
+                  </figure>
+                </figure>
+                <figure class="label">
+                  <figcaption class="total">16.5 lb</figcaption>
+                  <figcaption class="tare">/ 50 t</figcaption>
+>>>>>>> Stashed changes
+                </figure>
+              </div>
+              <div class="slot slot-empty">
+                <figure class="slot-content">
+                  <figure class="slot-icon"></figure>
+                  <figure class="label"></figure>
+                  <figcaption class="slot-number">3</figcaption>
+                </figure>
+              </div>
+              <div class="slot slot-empty">
+                <figure class="slot-content">
+                  <figure class="slot-icon"></figure>
+                  <figure class="label"></figure>
+                  <figcaption class="slot-number">4</figcaption>
+                </figure>
+              </div>
+              <div class="slot slot-empty">
+                <figure class="slot-content">
+                  <figure class="slot-icon"></figure>
+                  <figure class="label"></figure>
+                  <figcaption class="slot-number">5</figcaption>
+                </figure>
+              </div>
+            </figure>
+          </aside>
+          <section data-inventory-type="slots" data-inventory="player-inventory" class="primary">
+            <figure class="group pockets">
+              <h2 class="title"><span class="icon"></span>pockets</h2>
+              <figure class="slots">
+                <figure class="slot">
+                  <figure class="slot-icon" style="background-image: url(./assets/icons/camera.png)"></figure>
+                  <figcaption class="label">1</figcaption>
+                  <span class="notch"></span>
+                </figure>
+                <figure class="slot">
+                  <figure class="slot-icon" style="background-image: url(./assets/icons/bg.png)"></figure>
+                  <figcaption class="label">2</figcaption>
+                  <span class="notch"></span>
+                </figure>
+                <figure class="slot slot-empty">
+                  <figure class="slot-icon" style="background-image: url(./assets/icons/bg.png)"></figure>
+                  <figcaption class="label">2</figcaption>
+                  <span class="notch"></span>
+                </figure>
+                <figure class="slot slot-empty">
+                  <figure class="slot-icon"></figure>
+                  <figcaption class="label"></figcaption>
+                  <span class="notch"></span>
+                </figure>
+                <figure class="slot slot-locked">
+                  <figure class="icon"></figure>
+                  <span class="notch"></span>
+                </figure>
+                <figure class="slot slot-locked">
+                  <figure class="icon"></figure>
+                  <span class="notch"></span>
+                </figure>
+              </figure>
+            </figure>
+            <figure class="group backpack">
+              <h2 class="title"><span class="icon"></span>backpack</h2>
+              <div class="scroller">
+                <!-- Slots go here -->
+              </div>
+            </figure>
+          </section>
+          <aside class="secondary" data-inventory="player-stats" style="/* display: none */">
+            <section data-inventory-type="outfit" data-inventory="outfit" class="group outfit" style="display: none;">
+              <h2 class="title"><span class="icon"></span>outfit</h2>
+              <div class="divide">
+                <div class="slots-wrapper">
+                </div>
+                <div class="background">
+                  <img src="./assets/icons/man.svg" />
+                </div>
+              </div>
+            </section>
+            <section data-inventory-type="equipment" data-inventory="equipment" class="group equipment"
+              style="display: none;">
+              <h2 class="title"><span class="icon"></span>equipment</h2>
+              <figure class="slots">
+              </figure>
+            </section>
+            <section class="group nearby" style="display: block">
+              <h2 class="title">nearby inventories</h2>
+              <figure class="inventory-groups">
+                <button class="inventory-group" disabled>
+                  <header class="group-header">
+                    <figure class="details">
+                      <figure class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                            fill="currentColor" />
+                        </svg>
+                      </figure>
+                      <figure class="name">
+                        <h2 class="title">Car Trunk</h2>
+                        <figcaption class="subtitle">CTRUNK0001</figcaption>
+                      </figure>
+                    </figure>
+                    <figure class="weight">
+                      <figure class="details">
+                        <figcaption class="total">16.5 lb</figcaption>
+                        <figcaption class="tare">/ 50 t</figcaption>
+                      </figure>
+                      <figure class="icon"></figure>
+                    </figure>
+                  </header>
+                </button>
+                <button class="inventory-group">
+                  <header class="group-header">
+                    <figure class="details">
+                      <figure class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                            fill="currentColor" />
+                        </svg>
+                      </figure>
+                      <figure class="name">
+                        <h2 class="title">Car Trunk</h2>
+                        <figcaption class="subtitle">CTRUNK0001</figcaption>
+                      </figure>
+                    </figure>
+                    <figure class="weight">
+                      <figure class="details">
+                        <figcaption class="total">16.5 lb</figcaption>
+                        <figcaption class="tare">/ 50 t</figcaption>
+                      </figure>
+                      <figure class="icon"></figure>
+                    </figure>
+                  </header>
+                  <div class="group-contents">
+                    <figure class="slots-slim">
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                    </figure>
+                    <figure class="slots-slim">
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                    </figure>
+                  </div>
+                </button>
+                <button class="inventory-group active">
+                  <header class="group-header">
+                    <figure class="details">
+                      <figure class="icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.54727 7.68752L2.92188 3.76134C3.44805 2.25705 4.86719 1.25002 6.46094 1.25002H13.5391C15.1328 1.25002 16.5508 2.25705 17.0781 3.76134L18.4531 7.68752C19.3594 8.06252 20 8.95705 20 10V17.5C20 18.1914 19.4414 18.75 18.75 18.75H17.5C16.8086 18.75 16.25 18.1914 16.25 17.5V15.625H3.75V17.5C3.75 18.1914 3.19023 18.75 2.5 18.75H1.25C0.559766 18.75 0 18.1914 0 17.5V10C0 8.95705 0.639063 8.06252 1.54727 7.68752ZM4.26172 7.50002H15.7383L14.7188 4.58595C14.543 4.08595 14.0703 3.75002 13.5391 3.75002H6.46094C5.92969 3.75002 5.45703 4.08595 5.28125 4.58595L4.26172 7.50002ZM3.75 10C3.05977 10 2.5 10.5586 2.5 11.25C2.5 11.9414 3.05977 12.5 3.75 12.5C4.44141 12.5 5 11.9414 5 11.25C5 10.5586 4.44141 10 3.75 10ZM16.25 12.5C16.9414 12.5 17.5 11.9414 17.5 11.25C17.5 10.5586 16.9414 10 16.25 10C15.5586 10 15 10.5586 15 11.25C15 11.9414 15.5586 12.5 16.25 12.5Z"
+                            fill="currentColor" />
+                        </svg>
+                      </figure>
+                      <figure class="name">
+                        <h2 class="title">Car Trunk</h2>
+                        <figcaption class="subtitle">CTRUNK0001</figcaption>
+                      </figure>
+                    </figure>
+                    <figure class="weight">
+                      <figure class="details">
+                        <figcaption class="total">16.5 lb</figcaption>
+                        <figcaption class="tare">/ 50 t</figcaption>
+                      </figure>
+                      <figure class="icon"></figure>
+                    </figure>
+                  </header>
+                  <div class="group-contents">
+                    <figure class="slots-slim">
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                    </figure>
+                    <figure class="slots-slim">
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                      <figure class="slot-slim"></figure>
+                    </figure>
+                  </div>
+                </button>
+              </figure>
+            </section>
+          </aside>
+        </section>
+      </main>
+
+      <div class="weight">
+        <figure class="graph">
+          <div class="ring"></div>
+          <svg class="indicator" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="24.35" stroke="white" fill="none" stroke-width="1.3"
+              stroke-linecap="round" stroke-dasharray="112 149" stroke-dashoffset="112"
+              transform="rotate(140, 25, 25)" />
+          </svg>
+          <figure class="icon">
+            <span></span>
+          </figure>
+        </figure>
+        <figure class="label">
+          <figcaption class="total">16.5 lb</figcaption>
+          <figcaption class="tare">/ 50 t</figcaption>
+        </figure>
+      </div>
+
+      <div class="exit-wrapper">
+        <button class="exit">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M14.8493 2.4512C14.9348 2.36579 15.0026 2.26437 15.049 2.15274C15.0953 2.0411 15.1192 1.92143 15.1192 1.80057C15.1193 1.6797 15.0956 1.56001 15.0494 1.44831C15.0032 1.33662 14.9355 1.23512 14.8501 1.1496C14.7647 1.06409 14.6632 0.996229 14.5516 0.949908C14.44 0.903586 14.3203 0.879706 14.1994 0.879632C14.0786 0.879558 13.9589 0.90329 13.8472 0.949475C13.7355 0.995659 13.634 1.06339 13.5485 1.1488L7.99807 6.6992L2.44927 1.1488C2.27656 0.976093 2.04232 0.879066 1.79807 0.879066C1.55382 0.879066 1.31958 0.976093 1.14687 1.1488C0.974163 1.32151 0.877136 1.55575 0.877136 1.8C0.877136 2.04425 0.974163 2.27849 1.14687 2.4512L6.69727 8L1.14687 13.5488C1.06136 13.6343 0.99352 13.7358 0.947238 13.8476C0.900957 13.9593 0.877136 14.0791 0.877136 14.2C0.877136 14.3209 0.900957 14.4407 0.947238 14.5524C0.99352 14.6642 1.06136 14.7657 1.14687 14.8512C1.31958 15.0239 1.55382 15.1209 1.79807 15.1209C1.91901 15.1209 2.03877 15.0971 2.1505 15.0508C2.26223 15.0046 2.36376 14.9367 2.44927 14.8512L7.99807 9.3008L13.5485 14.8512C13.7212 15.0237 13.9553 15.1205 14.1994 15.1204C14.4435 15.1202 14.6776 15.0231 14.8501 14.8504C15.0226 14.6777 15.1194 14.4435 15.1192 14.1994C15.1191 13.9553 15.022 13.7213 14.8493 13.5488L9.29887 8L14.8493 2.4512Z"
+              fill="currentColor" />
+          </svg>
+        </button>
+      </div>
+      <figure class="outline">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </figure>
+
+      <svg class="green-glow" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg"
+        class="bg-glow">
+        <ellipse cx="146.724" cy="994.499" rx="830.735" ry="680.159" transform="rotate(-8.98056 146.724 994.499)"
+          fill="url(#paint0_radial_262_210)" fill-opacity="0.05" />
+        <ellipse cx="1796.72" cy="994.499" rx="830.735" ry="680.159" transform="rotate(-8.98056 1796.72 994.499)"
+          fill="url(#paint1_radial_262_210)" fill-opacity="0.1" />
+        <ellipse cx="1025.72" cy="55.4989" rx="830.735" ry="680.159" transform="rotate(-8.98056 1025.72 55.4989)"
+          fill="url(#paint2_radial_262_210)" fill-opacity="0.1" />
+        <ellipse rx="1155.89" ry="946.375" transform="matrix(-0.987741 -0.156099 -0.156099 0.987741 -23.2768 -76.5005)"
+          fill="url(#paint3_radial_262_210)" fill-opacity="0.2" />
+        <defs>
+          <radialGradient id="paint0_radial_262_210" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(146.724 954.767) rotate(98.9806) scale(643.246 877.384)">
+            <stop offset="0.0001" stop-color="white" />
+            <stop offset="0.453125" stop-color="#00D9B2" stop-opacity="0.65" />
+            <stop offset="1" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="paint1_radial_262_210" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(1796.72 954.767) rotate(98.9806) scale(643.246 877.384)">
+            <stop offset="0.0001" stop-color="#00D9B2" />
+            <stop offset="0.453125" stop-color="#00D9B2" />
+            <stop offset="1" stop-color="white" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="paint2_radial_262_210" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(1025.72 15.7668) rotate(98.9806) scale(643.246 877.384)">
+            <stop stop-color="#00D9B2" />
+            <stop offset="0.0001" stop-color="white" />
+            <stop offset="1" stop-color="#00D9B2" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="paint3_radial_262_210" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(1155.89 891.091) rotate(104.735) scale(1075.75 1467.32)">
+            <stop stop-color="#00D9B2" />
+            <stop offset="1" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+      </svg>
+
+      <figure class="bg-pattern"></figure>
+      <!-- <figure class="bg-blur"></figure> -->
+      <figure class="bg"></figure>
+    </div>
+  </div>
+</body>
+
+</html>

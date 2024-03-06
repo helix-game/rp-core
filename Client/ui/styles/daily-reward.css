@@ -1,0 +1,291 @@
+@font-face {
+    font-family: "Mona-Sans";
+    src: url("../fonts/Mona-Sans-Bold.otf") format("OpenType");
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Mona-Sans";
+    src: url("../fonts/Mona-Sans-SemiBold.otf") format("OpenType");
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  *:active,
+  *:focus {
+    outline: none;
+  }
+/*   
+  body,
+  html,
+  div,
+  span,
+  figure,
+  figcaption,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  b,
+  i,
+  u,
+  s,
+  a,
+  em,
+  strong,
+  small,
+  abbr,
+  cite,
+  q,
+  dfn,
+  sub,
+  sup,
+  samp,
+  kbd,
+  var,
+  bdo,
+  code,
+  del,
+  ins,
+  pre,
+  samp,
+  tt,
+  address,
+  blockquote,
+  center,
+  dir,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  a,
+  button,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-shadow: none;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-decoration: none;
+    overflow: hidden;
+  } */
+
+.daily-wrapper {
+    position: absolute;
+    bottom: 0%; 
+    left: 60%;
+    display: none;
+}
+  
+  #root {
+    height: 153px;
+    width: 187px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  #outline {
+    width: 100%;
+    position: relative;
+    height: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  #outline::before,
+  #outline::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    background-color: transparent;
+    display: block;
+    border-top: solid 1px white;
+  }
+  #outline::before {
+    border-left: solid 1px white;
+  }
+  #outline::after {
+    border-right: solid 1px white;
+  }
+  #outline > span {
+    width: 70px;
+    height: 1px;
+    background-color: white;
+    opacity: 0.5;
+    flex-grow: 1;
+  }
+  #outline > span:first-child {
+    margin-right: 7px;
+  }
+  #outline > span:last-child {
+    margin-left: 7px;
+  }
+  #outline > .icon {
+    width: 12px;
+    height: 13px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: translateY(-8px);
+    background-image: url("../media/locked.svg");
+  }
+  #root[data-unlocked="y"] #outline > .icon {
+    background-image: url("../media/unlocked.svg");
+  }
+  #indicator {
+    height: 153px;
+    width: 166px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.65);
+  }
+  #indicator::before {
+    content: "";
+    height: 3px;
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    transition: background-color 0.2s ease-in;
+  }
+  #root[data-unlocked="y"] #indicator::before {
+    background-color: #4dff74;
+  }
+  #indicator > .title {
+    line-height: 16px;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-family: "Mona-Sans";
+    color: white;
+  }
+  #indicator > .bounty {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 36px;
+    width: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #575757 208.16%);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1;
+    color: black;
+    margin-top: 9px;
+    font-family: "Mona-Sans";
+  }
+  #root[data-unlocked="y"] #indicator > .bounty {
+    background: linear-gradient(180deg, #4dff74 0%, #2d9644 184.62%);
+  }
+  #indicator > .bounty::before {
+    content: "";
+    height: 17px;
+    width: 17px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../media/lix.svg);
+    margin-right: 6px;
+  }
+  #timer {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  #timer > .label {
+    font-family: "Mona-Sans";
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 10px;
+  }
+  #timer > #countdown {
+    height: 25px;
+    width: 115px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 4px;
+    font-family: "Mona-Sans";
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1;
+    position: relative;
+    color: white;
+    padding-right: calc(10px);
+  }
+  #timer > #countdown::before {
+    content: "";
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    left: 7px;
+    background-image: url(../media/clock.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  

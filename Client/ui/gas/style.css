@@ -1,0 +1,366 @@
+:root{
+    --fontxsmall: clamp(12px, 0.007vw, 20px);
+    --fontsmall: clamp(14px, 0.008vw, 20px);
+    --fontmedium: clamp(16px, 0.09vw, 30px);
+    --fontlarge: clamp(20px, 0.012vw , 40px);
+    --fontxl: clamp(22px, 1.4vw, 50px);
+    --padlittle: clamp(5px, 0.3vw, 25px);
+    --padmedium: clamp(10px, 0.5vw, 30px);
+    --padlarge: clamp(15px, 1vw, 100px);
+    --padlarger: clamp(20px, 1.2vw, 150px);
+    --gap: clamp(0.7rem, 0.01vw, 2rem);
+    --gaplarge: clamp(1rem, 1vw, 4rem);
+    --radius: clamp(12px, 0.01vw, 30px);
+}
+@font-face {
+    font-family: "Liquid Crystal";
+    src: url(fonts/LiquidCrystal-Normal.otf);
+  }
+.fxs{
+    font-size: var(--fontxsmall);
+}
+.fs{
+    font-size: var(--fontsmall);
+}
+.fm{
+    font-size: var(--fontmedium);
+}
+.fl{
+    font-size: var(--fontlarge);
+}
+.pointer{
+    cursor: pointer;
+}
+*{
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-style: normal;
+}
+.hideslide{
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
+    transform: translateY(20vh);
+}
+.hidden{
+    display: none !important;
+}
+.escape{
+    position: absolute;
+    bottom: calc(3 * var(--gaplarge));
+    right: calc(3 * var(--gaplarge));
+    z-index: 200;
+    font-size: calc( 0.7 * var(--fontsmall));
+    color: rgba(255, 255, 255, 0.65);
+}
+.escape button{
+    padding: calc(0.7 * var(--padlittle));
+    color: black;
+    font-weight: 600;
+    margin-right: calc(0.5 * var(--gap));
+    border-radius: calc(0.5 * var(--radius));
+    border: 0;  
+    font-size: calc( 0.7 * var(--fontsmall));
+}
+.flexsmall{
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+.flexlittle{
+    display: flex;
+    gap: calc(0.5 * var(--gap));
+    align-items: center;
+}
+body{
+
+    overflow: hidden;
+
+}
+.gasstation{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+.container{
+    width: 603px;
+    height: 661px;
+    background: rgba(88, 88, 88, 0.40);
+    border-radius: 31px;
+    padding: var(--padmedium);
+    transform: translate(-50%, -50%) scale(calc(var(--scale) - 0.1));;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.gascontainer{
+    background: rgba(17, 17, 17, 0.95);
+    padding: var(--padlarger);
+    border-radius: 20px;
+    width: 579px;
+    height: 637px;
+}
+.logo{
+width: 147px;
+height: 39px;
+}
+.gascontainer header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 501px;
+    margin: 20px auto 0 auto;
+}
+.gascontainer header section p{
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+}
+.walletbalance{
+    font-size: 20px;
+}
+.cancel{
+    width: 42px;
+    height: 42px;
+    border-radius: calc(0.7 * var(--radius));
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.05);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.cancel:hover{
+    border: 2px solid rgba(255, 255, 255, 0.30);
+}
+.counter, .fuelcontainer{
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+}
+.counter{
+    width: 501px;
+    height: 233px;
+    margin: 35px auto 27px auto;
+}
+.counter .flexsmall{
+    margin-top: 38px;
+}
+.display{
+    border-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.20);
+    background: #4B554C;
+    padding: 11px 19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+    align-items: flex-end;
+    width: 388px;
+    height: 122px;
+    margin:0 15px 0 38px;
+}
+.display div{
+    font-family: "Liquid Crystal";
+    color: black;
+    font-size: 40px;
+    font-weight: 400;
+}
+.displayicons{
+    height: 122px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 36px;
+}
+.amount{
+    color: #787778;
+    text-shadow: 0px 0px 60px rgba(255, 255, 255, 0.15);
+    gap: var(--gap);
+    font-size: 20px;
+    margin: 30px 0 16px 0;
+    justify-content: center;
+    font-weight: 500;
+}
+.hl{
+    background: rgba(255, 255, 255, 0.06);
+    width: 159px;
+    height: 1px;
+}
+.fuelcontainer{
+    width: 500px;
+    height: 100px;
+    margin: auto;
+}
+.fuelingbtn{
+    margin: 42px auto 49px auto;
+    border-radius: 16px;
+    font-size: 16px;
+    letter-spacing: 0.96px;
+    font-weight: 700;
+    width: 250px;
+    height: 60px;
+    justify-content: center;
+}
+.startfueling{
+    text-transform: uppercase;
+    color: rgba(255, 201, 61, 0.90);
+    border: 1px solid rgba(255, 201, 61, 0.10);
+    background: rgba(255, 201, 61, 0.10);
+    cursor: pointer;
+}
+.startfueling:hover{
+    border: 1px solid rgba(255, 201, 61, 0.35);
+    background:  rgba(255, 201, 61, 0.80);
+}
+.startfueling:hover svg path, .stopfueling:hover svg path{
+    fill: rgba(0, 0, 0, 0.5);
+}
+.startfueling:hover p, .stopfueling:hover p{
+    color: rgba(0, 0, 0, 0.80);
+}
+.stopfueling{
+    cursor: pointer;
+    color: rgba(242, 64, 64, 0.90);
+    border: 1px solid rgba(242, 64, 64, 0.20);
+    background: rgba(242, 64, 64, 0.10);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.stopfueling:hover{
+    border: 1px solid rgba(255, 114, 114, 0.35);
+    background: rgba(242, 64, 64, 0.80);
+}
+.stopfueling svg path{
+    fill: rgba(242, 64, 64, 0.5)
+}
+.nofuel{
+    border: 1px solid rgba(242, 64, 64, 0.30);
+    background: transparent;
+    width: 70%;
+    color: rgba(242, 64, 64, 0.90);
+    font-weight: 500;
+    letter-spacing: 0.96px;
+}
+.nofuel svg path{
+    fill: #F24040;
+}
+.fuellevel{
+    letter-spacing: 0.7px;
+    font-weight: 500;
+    color: #787778;
+    text-shadow: 0px 0px 60px rgba(255, 255, 255, 0.15);
+    color: #787778;
+    font-size: 14px;
+    height: 32px;
+    width: 416px;
+    margin:13px auto 0 auto;
+}
+.emptyicon{
+    color: #4D4D4D;
+    text-shadow: 0px 0px 60px rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+    letter-spacing: 2.4px;
+    font-size: 24px;
+}
+.fuelgauge{
+    justify-content: center;
+}
+.gauge{
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+    transition: 2s ease-out;
+    overflow: hidden;
+    width: 368px;
+    height: 36px;
+}
+.scale{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/scale.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    z-index: 2;
+}
+.levelfilled{
+    transition: 2s ease-out width;
+    height: 100%;
+}
+
+
+@media screen and (max-width: 4000px) {
+    body {
+        --scale: 1.5;
+    }
+}
+
+@media screen and (max-width: 3000px) {
+    body {
+        --scale: 1.4;
+    }
+}
+
+@media screen and (max-width: 2560px) {
+    body {
+        --scale: 1.3;
+    }
+}
+
+@media screen and (max-width: 2100px) {
+    body {
+        --scale: 1.2;
+    }
+}
+
+@media screen and (max-width: 2020px) {
+    body {
+        --scale: 1;
+    }
+}
+
+@media screen and (max-width: 1520px) {
+    body {
+        --scale: 0.9;
+    }
+}
+
+@media screen and (max-width: 1324px) {
+    body {
+        --scale: 0.87;
+    }
+}
+
+@media screen and (max-width: 1124px) {
+    body {
+        --scale: 0.8;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        --scale: 0.7;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        --scale: 0.6;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        --scale: 0.5;
+    }
+}

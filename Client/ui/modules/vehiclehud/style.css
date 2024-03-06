@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: "Intro Bold Italic";
+  src: url("./media/Intro\ Bold\ Italic.otf");
+}
+
+/* import Intro Regular Italic.otf */
+@font-face {
+  font-family: "Intro Regular Italic";
+  src: url("./media/Intro\ Regular\ Italic.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-shadow: none;
+  text-decoration: none;
+  color: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
+*,
+*::before *::after {
+  box-sizing: border-box;
+}
+
+*:active,
+*:focus {
+  outline: 0;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  font-family: "Inter", serif;
+  --scale: 1;
+}
+
+.game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  z-index: 1;
+}
+
+.game .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: url(./media/game-bg.png); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -4;
+}
+
+.game .green-shadows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./media/shadows.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -3;
+  transition: all .3s;
+  opacity: 1;
+}
+
+.game .black-shadows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./media/black-shadows.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+.game .speedometer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0px;
+  width: 398px;
+  height: 398px;
+  transform-origin: bottom right;
+  transform: scale(var(--scale));
+}
+
+.game .speedometer .shadow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./media/shadow.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  opacity: .8;
+}
+
+.game .speedometer .handshake-alert {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  fill: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.game .speedometer .handshake-alert.on {
+  opacity: 1;
+}
+
+.game .speedometer .speed-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49.5%, -49.5%);
+  height: 70.5%;
+  width: 70.5%;
+  stroke-width: 1.1px;
+}
+
+.game .speedometer .speed-percentage .circle {
+  stroke: white;
+  transition: all 1s linear;
+  transform-origin: center;
+  transform: rotate(229deg);
+}
+
+.game .speedometer .speed-percentage .fuel {
+  stroke: #00D9B2;
+  transition: all 1s linear;
+  transform-origin: center;
+  transform: rotate(132.5deg) scaleX(-1);
+  stroke-width: .4px;
+}
+
+.game .speedometer .engine-state {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, -50%);
+  gap: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Intro Bold Italic';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.4);
+
+  text-shadow: 0px 0px 55px;
+}
+
+.game .speedometer .engine-state svg {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+.game .speedometer h1 {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-family: 'Intro Bold Italic';
+  font-style: italic;
+  font-size: 54px;
+  line-height: 54px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: #FFFFFF;
+
+  text-shadow: 0px 0px 55px rgba(0, 0, 0, 0.65);
+}
+
+.game .speedometer h1 span {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.game .speedometer h1::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "mph";
+  font-family: 'Intro Bold Italic';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.25);
+
+  text-shadow: 0px 0px 55px rgba(0, 0, 0, 0.65);
+  text-transform: uppercase;
+}
+
+.game .speedometer .gear {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 55px rgba(0, 0, 0, 0.65);
+  outline: 2px solid white;
+  outline-offset: 5px;
+}
+
+.game .speedometer .needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%) rotate(-42deg);
+  padding-right: 26px;
+  filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.65));
+  transform-origin: right;
+  transition: transform 1s linear;
+}
+
+.game .speedometer .gear span {
+  font-family: 'Intro Regular Italic';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: #FFFFFF;
+
+  text-shadow: 0px 0px 55px rgba(0, 0, 0, 0.65);
+}
+
+.game .speedometer .engine-icon{
+  position: absolute;
+  left: 15%;
+  bottom: 27.7%;
+  fill: rgba(255, 255, 255, 0.4);
+  transition: fill 1s linear;
+}
+
+.game .speedometer .engine-icon.on{
+  fill: #00D9B2;
+}
+
+.game .speedometer .fuel-icon {
+  position: absolute;
+  right: 15%;
+  bottom: 27.7%;
+  fill: #00D9B2;
+  transition: fill 1s linear;
+}
+
+.game .speedometer .fuel-icon.medium-fuel {
+  fill: #FFC700;
+}
+
+.game .speedometer .fuel-icon.low-fuel {
+  fill: #FF0000;
+  animation: blink 1s infinite;
+}
+
+.game .speedometer .speedometer-bg {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  width: 115%;
+  height: 115%;
+  transform: translate(-50%, -50%);
+  /* background: url(./media/speedometer.png); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1;
+}
+
+
+
+@media screen and (max-width: 4000px) {
+  body {
+    --scale: 1.5;
+  }
+}
+
+@media screen and (max-width: 3000px) {
+  body {
+    --scale: 1.4;
+  }
+}
+
+@media screen and (max-width: 2560px) {
+  body {
+    --scale: 1.3;
+  }
+}
+
+@media screen and (max-width: 2100px) {
+  body {
+    --scale: 1.2;
+  }
+}
+
+@media screen and (max-width: 2020px) {
+  body {
+    --scale: 1.1;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  body {
+    --scale: 1;
+  }
+}
+
+@media screen and (max-width: 1520px) {
+  body {
+    --scale: 0.8;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  body {
+    --scale: 0.7;
+  }
+}
+
+@media screen and (max-width: 1124px) {
+  body {
+    --scale: 0.65;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    --scale: 0.6;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    --scale: 0.55;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    --scale: 0.5;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

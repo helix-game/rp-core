@@ -1,0 +1,23 @@
+{
+    "Vehicle": {
+        "name": "Bentley",
+        "asset": "helix::BP_XDrive_Veh_42",
+        "doors": [
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(-20, -75, 75)",
+                "seatLoc": "Vector(-15, -39, 85)",
+                "seatRot": "Rotator(-10, 0, 0)",
+                "triggerRadius": 75
+            },
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(-20, 75, 75)",
+                "seatLoc": "Vector(-15, 39, 85)",
+                "seatRot": "Rotator(-10, 0, 0)",
+                "triggerRadius": 75
+            }
+        ],
+        "maxfuel": 19
+    }
+}

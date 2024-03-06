@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: Inter;
+  color: rgba(255, 255, 255, 1);
+}
+
+.grid-item {
+  background: rgba(30, 30, 30, 1);
+  border-left: 6px solid #2283FF;
+
+  position: relative;
+  right: 0px;
+  opacity: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-inline: 8px;
+}
+
+.grid-container {
+  height: 63%;
+
+  padding-right: 75px;
+
+  top: 20%;
+  right: 0;
+
+  
+  position: absolute;
+  
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+
+  gap: 18px;
+
+  overflow: hidden;
+  background: none;
+}
+
+.grid-item {
+  width: 252px;
+  min-height: 70px;
+  opacity: 1;
+  position: relative;
+  padding-block: 10px;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.side {
+  width: 9%;
+  height: 70px;
+  background: rgba(0, 0, 0, 1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+
+.bg {
+  width: 248px;
+  height: 100%;
+  background: rgba(30, 30, 30, 1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  overflow: hidden;
+}
+
+.text {
+  width: 181px;
+  opacity: 1;
+}
+
+.title {
+  display: block;
+  width: 114px;
+  color: rgba(255, 255, 255, 1);
+
+  font-family: Inter;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+
+.label {
+  width: 181px;
+
+  font-size: 10px;
+  opacity: 1;
+  text-align: left;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  opacity: 1;
+  background: none;
+
+}
+
+/*COLOR TAGS*/
+
+[id|=success] {
+  background-color: #3CBE74;
+  color: #3CBE74;
+}
+
+[id|=info] {
+  background-color: #2283FF;
+  color: #2283FF;
+}
+
+[id|=error] {
+  background-color: #E94547;
+  color: #E94547;
+}
+
+[id|=warn] {
+  background-color: #FEBE09;
+  color: #FEBE09;
+}
+
+[id|=phone] {
+  background-color: #3CBE74;
+  color: #3CBE74;
+}
+
+[id|=long-msg] {
+  background-color: #6D7676;
+  color: #6D7676;
+}
+
+[id|=interact] {
+  background-color: #2283FF;
+  color: #2283FF;
+}
+
+[id$=-text] {
+  background: none;
+}
+
+/*--------------------*/
+
+image {
+  background: none;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  opacity: 1;
+  background: none;
+}
+
+focus {
+
+  font-weight: bold
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUD</title>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
+
+  <link rel="stylesheet" href="./hud.css">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+  <script defer src="./hud.js"></script>
+</head>
+
+<body>
+  <div class="minimap-section">
+    <div class="minimap">
+      <div class="rotator-container">
+        <div>
+          <img class="map" src="./assets/map.png" alt="">
+        </div>
+        <div class="player-indicator">
+          <object data="./svgs/player_indicator.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </div>
+    <div class="compass-indicator">
+      <div class="line">
+        <div class="icon">
+          <object data="./svgs/clock.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="detail">21:13</div>
+      </div>
+      <div class="compass-degree">NE</div>
+      <div class="line">
+        <div class="icon">
+          <object data="./svgs/date.svg" type="image/svg+xml"></object>
+        </div>
+        <div class="detail">12/24</div>
+      </div>
+    </div>
+    <div class="player-stats">
+      <div class="player-stat" data-stat="health">
+        <svg class="icon" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M8.99996 15.7917L7.79163 14.6917C3.49996 10.8 0.666626 8.225 0.666626 5.08333C0.666626 2.50833 2.68329 0.5 5.24996 0.5C6.69996 0.5 8.09163 1.175 8.99996 2.23333C9.90829 1.175 11.3 0.5 12.75 0.5C15.3166 0.5 17.3333 2.50833 17.3333 5.08333C17.3333 8.225 14.5 10.8 10.2083 14.6917L8.99996 15.7917Z" />
+        </svg>
+        <svg class="percentage" viewBox="0 0 36 36">
+          <path class="fill" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+          <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+        </svg>
+        <div class="bg-color"></div>
+      </div>
+      <div class="player-stat" style="display: none;" data-stat="armor">
+        <svg class="icon" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M11.8139 9.31143L11.058 8.64726C10.8117 8.39563 10.6714 8.0533 10.6714 7.69635V3.59718C10.6714 3.19926 10.7459 2.8072 10.889 2.43854L11.5247 0.802967C11.5533 0.726894 11.519 0.639117 11.4474 0.606933L10.1475 0.0129785C10.073 -0.0192062 9.98998 0.0129785 9.95276 0.0831997L8.76736 2.43268C8.64137 2.68138 8.39227 2.83646 8.12026 2.83646H3.87115C3.59914 2.83646 3.35004 2.68138 3.22405 2.43268L2.03865 0.0831997C2.00143 0.0100526 1.91553 -0.0192062 1.84395 0.0129785L0.549749 0.604007C0.475304 0.639117 0.440945 0.723968 0.472441 0.800041L1.10809 2.43561C1.25125 2.80427 1.3257 3.19634 1.3257 3.59426V7.69342C1.3257 8.05038 1.18826 8.39271 0.939155 8.64433L0.18325 9.30851C0.0687187 9.41091 0 9.55721 0 9.7152V14.1538C0 14.2971 0.0944882 14.4229 0.229062 14.461L0.732999 14.6014L0.953472 15.5699C0.953472 15.5699 1.29707 16 2.79456 16H9.20544C10.7029 16 11.0465 15.5699 11.0465 15.5699L11.267 14.6014L11.7709 14.461C11.9055 14.4229 12 14.2971 12 14.1538V9.7152C12 9.56013 11.9341 9.41091 11.8168 9.30851L11.8139 9.31143Z" />
+        </svg>
+        <svg class="percentage" viewBox="0 0 36 36">
+          <path class="fill" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+          <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+        </svg>
+        <div class="bg-color"></div>
+      </div>
+      <div class="player-stat" data-stat="hunger">
+        <svg class="icon" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M15.3334 6.88176C17.1667 9.63176 12.5834 17.8818 10.7501 17.8818C8.91672 17.8818 8.91672 16.9651 8.00006 16.9651C7.08339 16.9651 7.08339 17.8818 5.25006 17.8818C3.41672 17.8818 -1.16661 9.63176 0.666723 6.88176C2.50006 4.13176 5.25006 4.13176 7.08339 5.04843V2.29843C1.93172 5.11259 0.767556 1.18009 0.767556 1.18009C0.767556 1.18009 3.20589 -2.11074 7.08339 2.29843V0.465093H8.91672V5.04843C10.7501 4.13176 13.5001 4.13176 15.3334 6.88176Z" />
+        </svg>
+        <svg class="percentage" viewBox="0 0 36 36">
+          <path class="fill" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+          <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+        </svg>
+        <div class="bg-color"></div>
+      </div>
+      <div class="player-stat" data-stat="thirst">
+        <svg class="icon" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M7.39187 0.583089C7.34347 0.526558 7.2834 0.481175 7.21579 0.450059C7.14818 0.418943 7.07464 0.402832 7.00022 0.402832C6.92579 0.402832 6.85225 0.418943 6.78464 0.450059C6.71703 0.481175 6.65696 0.526558 6.60855 0.583089C5.24816 2.17422 0.8125 7.67508 0.8125 11.7498C0.8125 15.547 3.20328 17.9373 7 17.9373C10.7967 17.9373 13.1875 15.547 13.1875 11.7498C13.1875 7.67508 8.75184 2.17422 7.39187 0.583089ZM7.6875 15.7029C7.60491 15.7031 7.52349 15.6835 7.45009 15.6456C7.37668 15.6078 7.31344 15.5528 7.26569 15.4855C7.21794 15.4181 7.18706 15.3402 7.17567 15.2584C7.16428 15.1766 7.17271 15.0933 7.20023 15.0154C7.2354 14.9138 7.30171 14.8259 7.38973 14.7642C7.47776 14.7025 7.58301 14.6701 7.69051 14.6717C8.37302 14.6702 9.02715 14.3984 9.50976 13.9158C9.99237 13.4332 10.2641 12.7791 10.2656 12.0966C10.2641 11.9891 10.2964 11.8838 10.3581 11.7958C10.4199 11.7078 10.5078 11.6415 10.6094 11.6063C10.6872 11.5788 10.7706 11.5703 10.8524 11.5817C10.9342 11.5931 11.012 11.624 11.0794 11.6717C11.1468 11.7195 11.2017 11.7827 11.2396 11.8561C11.2774 11.9296 11.2971 12.011 11.2969 12.0936C11.2959 13.0505 10.9153 13.968 10.2386 14.6446C9.56192 15.3213 8.64445 15.7019 7.6875 15.7029Z" />
+        </svg>
+        <svg class="percentage" viewBox="0 0 36 36">
+          <path class="fill" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+          <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+        </svg>
+        <div class="bg-color"></div>
+      </div>
+      <div class="player-stat" style="display: none;" data-stat="stress">
+        <svg class="icon" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M6.5 0C5.56563 0 4.79063 0.640625 4.56875 1.50625C4.54375 1.50625 4.525 1.5 4.5 1.5C3.39687 1.5 2.5 2.39687 2.5 3.5C2.5 3.65 2.51875 3.79688 2.55312 3.9375C1.64062 4.3125 1 5.20625 1 6.25C1 6.64375 1.1 7.00937 1.25937 7.34062C0.509375 7.77187 0 8.57187 0 9.5C0 10.5406 0.6375 11.4344 1.54375 11.8094C1.51562 11.9531 1.5 12.1 1.5 12.25C1.5 13.4937 2.50625 14.5 3.75 14.5C3.87812 14.5 4.00313 14.4844 4.125 14.4625C4.425 15.3531 5.25625 16 6.25 16C7.49375 16 8.5 14.9937 8.5 13.75V2C8.5 0.896875 7.60313 0 6.5 0ZM18 9.5C18 8.57187 17.4906 7.77187 16.7406 7.34062C16.9031 7.00937 17 6.64375 17 6.25C17 5.20625 16.3594 4.3125 15.4469 3.9375C15.4781 3.79688 15.5 3.65 15.5 3.5C15.5 2.39687 14.6031 1.5 13.5 1.5C13.475 1.5 13.4531 1.50625 13.4312 1.50625C13.2094 0.640625 12.4344 0 11.5 0C10.3969 0 9.5 0.89375 9.5 2V13.75C9.5 14.9937 10.5063 16 11.75 16C12.7437 16 13.575 15.3531 13.875 14.4625C13.9969 14.4844 14.1219 14.5 14.25 14.5C15.4937 14.5 16.5 13.4937 16.5 12.25C16.5 12.1 16.4844 11.9531 16.4562 11.8094C17.3625 11.4344 18 10.5406 18 9.5Z" />
+        </svg>
+        <svg class="percentage" viewBox="0 0 36 36">
+          <path class="fill" d="M18 2.0845
+                      a 15.9155 15.9155 0 0 1 0 31.831
+                      a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+          <path class="circle-bg" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+        </svg>
+        <div class="bg-color"></div>
+      </div>
+    </div>
+    <div class="voice-indicators">
+      <div class="voip-indicator active">
+        <object data="./svgs/voice.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="radio-indicator">
+        <object data="./svgs/radio.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="items-group">
+    <div class="item-slot">
+      <div class="empty-slot">
+        <object data="./svgs/slot.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="action">
+        <img src="./svgs/menu.svg" alt="">
+      </div>
+      <div class="hotkey">
+        <p>K</p>
+      </div>
+    </div>
+    <div class="item-slot">
+      <div class="empty-slot">
+        <object data="./svgs/slot.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="action">
+        <img src="./svgs/honeycomb.svg" alt="">
+      </div>
+      <div class="hotkey">
+        <p>X</p>
+      </div>
+    </div>
+    <div class="item-slot">
+      <div class="empty-slot">
+        <object data="./svgs/slot.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="action">
+        <img src="./svgs/backpack.svg" alt="">
+      </div>
+      <div class="hotkey">
+        <p>I</p>
+      </div>
+    </div>
+    <div class="item-slot">
+      <div class="empty-slot">
+        <object data="./svgs/slot.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="action">
+        <img src="./svgs/phone.svg" alt="">
+      </div>
+      <div class="hotkey">
+        <p>P</p>
+      </div>
+    </div>
+    <div class="item-slot">
+      <div class="empty-slot">
+        <object data="./svgs/slot.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="action">
+        <img src="./svgs/map icon.svg" alt="">
+      </div>
+      <div class="hotkey">
+        <p>M</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="server-information">
+    <div class="helix-logo">
+      <object data="./svgs/helix.svg" type="image/svg+xml"></object>
+    </div>
+    <div class="player-data">
+      <div class="player-count">
+        <div class="detail">125</div>
+        <div class="icon">
+          <object data="./svgs/players_online.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+      <div class="server-id">
+        <div class="detail">
+          1
+        </div>
+        <div class="icon">
+          <object data="./svgs/player_id.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="player-information">
+    <div class="lix money">
+      <div class="detail">3.211.160 $</div>
+      <div class="icon">
+        <object data="./svgs/lix.svg" type="image/svg+xml"></object>
+      </div>
+    </div>
+    <!-- <div class="money bank">
+      <div class="detail">3.211.160 $</div>
+      <div class="icon">
+        <object data="./svgs/bank.svg" type="image/svg+xml"></object>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="notifications">
+    <!-- <div class="notification success">
+      <div class="data">
+        <h1>success</h1>
+        <h2>You have been revived</h2>
+      </div>
+      <div class="icon">
+        <img src="./assets/notifications/success-icon.svg" alt="" class="icon">
+      </div>
+      <svg class="percentage" viewBox="0 0 36 36">
+        <path class="fill" d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="50, 100" />
+        <path class="circle-bg" d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" ; stroke-dasharray="100, 100" />
+      </svg>
+    </div> -->
+
+  </div>
+
+  <div class="shadow-tr"></div>
+  <div class="shadow-bl"></div>
+  <div class="shadow-rc"></div>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+@font-face {
+font-family: 'Marsden';
+src: url('./media/Marsden.ttf');
+}
+@font-face {
+font-family: 'MarsdenLight';
+src: url('./media/MarsdenLight.ttf');
+}
+
+
+
+.taxi-wrapper{
+    width: 900px;
+    height: 700px;
+    padding: 60px;
+    background-color: rgb(0, 0, 0);
+    border: 3px solid yellow;
+    border-radius: 5%;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.taxi-wrapper button {
+padding: 10px;
+margin-bottom: 60px;
+border: 5px solid yellow;
+color: yellow;
+background-color: black;
+border-radius: 15px;
+}
+
+.taxi-wrapper button:hover {
+background-color: yellow;
+color: black;
+cursor: pointer;
+}
+
+#fb{
+    width:800px;
+    margin-bottom: 20px;
+    border: 1px solid grey;
+    border-top: 10px white solid;
+    border-radius:5px;
+    position:relative;
+    height:135px;
+    /* z-index: 9999; */
+}
+#fb p{
+    font-family:sans-serif;
+    margin: 0 0 0 10px;
+    line-height:30px;
+}
+
+#fb-top span{
+    color:#4267B2;
+    float:right;
+    margin-right:10px;
+}
+
+#fb img{
+    position:absolute;
+    height: fit-content;
+    left:10px;
+    top:52.5px;
+}
+
+#info{
+    position:absolute;
+    left:120px;
+    top:60px;
+}
+
+#info {
+    color:#4267B2;
+    line-height:25px;
+    font-size:18px;
+}
+
+#info span{
+    color:#777;
+    font-size:14px;
+}
+
+#button-block{
+    position:absolute;
+    right:10px;
+    top:75px;
+}
+
+#button-block div{
+    display:inline-block;
+}
+
+#confirm, #delete{
+    background-color:#4267B2;
+    color:white;
+    padding:7px;
+    border-radius:2px;
+    margin-right:10px;
+    font-family:sans-serif;
+}
+
+#delete{
+    color:#222;
+    background-color:#bbb;
+    border:1px solid #999;
+    padding:6px;
+    margin-right:0;
+}
+
+#button-block div:hover{
+    opacity:.8;
+    cursor:pointer;
+}
+
+.notif {
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url("./media/bg.jpg"); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none;
+    pointer-events: none;
+}
+.container{
+    position: absolute;
+    bottom: 0%;
+    left: 35%;
+    transform: translateX(-50%);
+    width: fit-content;
+    height: fit-content;
+    /* background-color: rgba(0, 0, 0, 0.256); */
+    font-family: 'Marsden';
+    display: flex;
+    cursor: default;
+}
+.container img{
+    height: 100px;
+}
+.container .box{
+    width: 210px;
+    color: white;
+    text-shadow: 0 0 10px black;
+}
+.box h1{
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.296);
+    width: 130px;
+}
+.box p{
+    font-family: 'MarsdenLight';
+    font-size: 1.4rem;
+    font-weight: 100;
+    width: fit-content;
+}
+
+

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.interaction-wrapper.wrapper {
+    font-family: 'Outfit'!important;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    z-index: -1;
+}
+
+.interaction-group {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.interaction-group .interaction-button {
+    position: relative;
+    width: fit-content;
+    display: inline-block;
+}
+.interaction-group .circle{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+.interaction-group #back_circle{
+    width: 30px;
+    height: 30px;
+}
+.interaction-group .interaction-key{
+    color: white;
+    display: inline-block;
+}
+.interaction-group .interaction-message{
+    font-size: 1rem;
+    color: rgba(233, 233, 233, 0.7);
+    letter-spacing: 2px;
+    height: fit-content;
+    margin-bottom: 5%;
+}
+
+.interaction-group .circle {
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}

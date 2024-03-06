@@ -1,0 +1,107 @@
+.confirm-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+}
+
+.confirm-menu{
+    font-family: 'Outfit';
+    text-align: center;
+}
+
+.confirm-menu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 800px;
+    height: 800px;
+
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0) 70%);
+
+    z-index: -1;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.confirm-menu #title{
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    color: #21BEA8;
+
+    white-space: nowrap;
+
+    margin-bottom: 12px;
+}
+
+.confirm-menu #description{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+
+    margin-bottom: 4px;
+
+    color: #FFFFFF;
+}
+
+.confirm-menu #price {
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+}
+
+.confirm-menu #priceValue{
+    color: #21BEA8;
+    font-weight: 500;
+}
+.confirm-menu .buttons {
+    margin-top: 30px;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.confirm-menu .buttons button {
+    width: 178px;
+    height: 60px;
+    border-radius: 18px;
+    border: 0;
+    outline: 0;
+
+
+    background: transparent;
+    background-image: url(./not_active_btn.png);
+    background-position: center;
+    background-size: 100% 100%;
+
+    padding-inline: 29px;
+    padding-block: 18px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+
+
+    cursor: pointer;
+
+    transition: all ease-in 100ms;
+}
+
+.confirm-menu .buttons button:hover {
+    background: radial-gradient(90% 182.14% at 0% -55.36%, rgba(11, 170, 148, 0.85) 0%, rgba(0, 0, 0, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(11, 170, 148, 0.15);
+}

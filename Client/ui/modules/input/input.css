@@ -1,0 +1,107 @@
+.input-wrapper.wrapper {
+    align-items: center;
+
+    font-family: 'Outfit';
+    font-style: normal;
+
+    opacity: 0;
+}
+.input-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-menu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 800px;
+    height: 800px;
+
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0) 70%);
+
+    z-index: -1;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-menu h1{
+    font-weight: 700;
+    font-size: 24px;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    
+    color: #21BEA8;
+    
+    margin-bottom: 5px;
+}
+
+.input-menu p{
+    font-weight: 500;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+    
+    color: #FFFFFF;
+
+    margin-bottom: 30px;
+}
+
+.input-menu input{
+
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0px 0px 25px rgba(0, 0, 0, 0.03);
+    border-radius: 18px;
+    outline: none;
+
+    width: 330px;
+    height: 76px;
+
+    padding-block: 25px;
+    padding-inline: 30px;
+
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+
+    color: #FFFFFF;
+
+}
+
+.input-menu .buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.input-menu .buttons button#accept, .input-menu .buttons button#cancel {
+    width: 140px;
+    height: 60px;
+    
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 18px;
+
+    background: radial-gradient(203.93% 402.68% at 0% -55.36%, rgba(255, 255, 255, 0.12) 0%, rgba(0, 0, 0, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    color: #FFFFFF;
+
+    border: 0;
+    cursor: pointer;
+
+    transition: all ease-in 100ms;
+    
+}
+
+.input-menu .buttons button:hover {
+    background: radial-gradient(90% 182.14% at 0% -55.36%, rgba(11, 170, 148, 0.85) 0%, rgba(0, 0, 0, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, rgba(11, 170, 148, 0.15)!important;
+    color: #21BEA8!important;
+}

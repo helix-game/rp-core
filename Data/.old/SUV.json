@@ -1,0 +1,172 @@
+{
+    "Vehicle": {
+        "name": "SUV",
+        "aerodynamicsSettings": {
+            "chassisHeight": 210,
+            "chassisWidth": 500,
+            "downForce": 0.5,
+            "drag": 0.3,
+            "mass": 2000
+        },
+        "asset": "helix::SK_SUV",
+        "autoStartEngine": false,
+        "autoUnflip": true,
+        "collision": 0,
+        "disableGravity": false,
+        "doors": [
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(22.000000, -80.000000, 120.000000)",
+                "seatLoc": "Vector(-18.000000, -47.000000, 110.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, 15.000000)",
+                "triggerRadius": 75
+            },
+            {
+                "leaveLateralOffset": 150,
+                "offsetLoc": "Vector(22.000000, 80.000000, 120.000000)",
+                "seatLoc": "Vector(5.000000, 47.000000, 105.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, 0.000000)",
+                "triggerRadius": 60
+            },
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(-80.000000, -80.000000, 120.000000)",
+                "seatLoc": "Vector(-60.000000, -39.000000, 90.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, 0.000000)",
+                "triggerRadius": 60
+            },
+            {
+                "leaveLateralOffset": 150,
+                "offsetLoc": "Vector(-80.000000, 80.000000, 120.000000)",
+                "seatLoc": "Vector(-60.000000, 39.000000, 90.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, 0.000000)",
+                "triggerRadius": 60
+            }
+        ],
+        "engineSettings": {
+            "maxRPM": 4500,
+            "maxTorque": 800
+        },
+        "sounds": {
+            "engine": "helix::A_Vehicle_Engine_14"
+        },
+        "steeringWheelSettings": {
+            "location": "Vector(0.000000, 20.000000, 135.000000)",
+            "radius": 20
+        },
+        "wheels": [
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": false,
+                "affectedByHandbrake": false,
+                "bone": "Wheel_Front_Left",
+                "corneringStiffness": 1200,
+                "frictionForceMulti": 2,
+                "maxBrakeTorque": 1500,
+                "maxHandbrakeTorque": 3000,
+                "maxSteerAngle": 50,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 34,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "dampingRatio": 0.5,
+                    "maxDrop": 10,
+                    "maxRaise": 6,
+                    "smoothing": 0,
+                    "springPreload": 30,
+                    "springRate": 150,
+                    "wheelLoadRatio": 0.7
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": false,
+                "affectedByHandbrake": false,
+                "bone": "Wheel_Front_Right",
+                "corneringStiffness": 1200,
+                "frictionForceMulti": 2,
+                "maxBrakeTorque": 1500,
+                "maxHandbrakeTorque": 3000,
+                "maxSteerAngle": 50,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 34,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "dampingRatio": 0.5,
+                    "maxDrop": 10,
+                    "maxRaise": 6,
+                    "smoothing": 0,
+                    "springPreload": 30,
+                    "springRate": 150,
+                    "wheelLoadRatio": 0.7
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": true,
+                "bone": "Wheel_Rear_Left",
+                "corneringStiffness": 1200,
+                "frictionForceMulti": 5,
+                "maxBrakeTorque": 1500,
+                "maxHandbrakeTorque": 3000,
+                "maxSteerAngle": 0,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 34,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "dampingRatio": 0.5,
+                    "maxDrop": 10,
+                    "maxRaise": 6,
+                    "smoothing": 0,
+                    "springPreload": 30,
+                    "springRate": 150,
+                    "wheelLoadRatio": 0.7
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": true,
+                "bone": "Wheel_Rear_Right",
+                "corneringStiffness": 1200,
+                "frictionForceMulti": 5,
+                "maxBrakeTorque": 1500,
+                "maxHandbrakeTorque": 3000,
+                "maxSteerAngle": 0,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 34,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "dampingRatio": 0.5,
+                    "maxDrop": 10,
+                    "maxRaise": 6,
+                    "smoothing": 0,
+                    "springPreload": 30,
+                    "springRate": 150,
+                    "wheelLoadRatio": 0.7
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            }
+        ]
+    }
+}

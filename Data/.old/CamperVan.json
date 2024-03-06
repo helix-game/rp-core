@@ -1,0 +1,205 @@
+{
+    "Vehicle": {
+        "name": "Offroad",
+        "aerodynamicsSettings": {
+            "centerOfMass": "Vector(0.000000, 0.000000, 0.000000)",
+            "chassisHeight": 160,
+            "chassisWidth": 180,
+            "downForce": 0.1,
+            "drag": 0.1,
+            "mass": 1500
+        },
+        "animBlueprint": "helix::ABP_Offroad",
+        "asset": "helix::SK_Offroad",
+        "attachedMesh": [
+            {
+                "id": "body",
+                "meshPath": "helix::SM_Offroad_Body"
+            },
+            {
+                "bone": "VisWheel_BR",
+                "id": "wheel_BR",
+                "meshPath": "helix::SM_Offroad_Tire",
+                "rotation": "Rotator(0.000000, 180.000000, 0.000000)"
+            },
+            {
+                "bone": "VisWheel_BL",
+                "id": "wheel_BL",
+                "meshPath": "helix::SM_Offroad_Tire"
+            },
+            {
+                "bone": "VisWheel_FR",
+                "id": "wheel_FR",
+                "meshPath": "helix::SM_Offroad_Tire",
+                "rotation": "Rotator(0.000000, 180.000000, 0.000000)"
+            },
+            {
+                "bone": "VisWheel_FL",
+                "id": "wheel_FL",
+                "meshPath": "helix::SM_Offroad_Tire"
+            }
+        ],
+        "autoStartEngine": false,
+        "autoUnflip": true,
+        "collision": 0,
+        "disableGravity": false,
+        "doors": [
+            {
+                "leaveLateralOffset": -150,
+                "offsetLoc": "Vector(0.000000, -80.000000, 100.000000)",
+                "seatLoc": "Vector(12.000000, -30.000000, 90.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, 0.000000)",
+                "triggerRadius": 75
+            },
+            {
+                "leaveLateralOffset": 150,
+                "offsetLoc": "Vector(0.000000, 80.000000, 100.000000)",
+                "seatLoc": "Vector(40.000000, 32.000000, 90.000000)",
+                "seatRot": "Rotator(0.000000, 0.000000, -15.000000)",
+                "triggerRadius": 75
+            }
+        ],
+        "engineSettings": {
+            "brakeEffect": 0.05,
+            "idleRPM": 1200,
+            "maxRPM": 5000,
+            "maxTorque": 600,
+            "revDownRate": 600,
+            "revUpRate": 5
+        },
+        "maxFuel": 50.0,
+        "sounds": {
+            "brake": "helix::A_Vehicle_Skid",
+            "door": "helix::A_Vehicle_Door",
+            "engine": "helix::A_Vehicle_Engine_15",
+            "engineStart": "helix::A_Car_Engine_Start",
+            "horn": "helix::A_Vehicle_Horn_Toyota"
+        },
+        "steeringWheelSettings": {
+            "location": "Vector(0.000000, 30.000000, 130.000000)",
+            "radius": 15
+        },
+        "wheels": [
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": false,
+                "bone": "PhysWheel_FL",
+                "corneringStiffness": 750,
+                "frictionForceMulti": 4,
+                "maxBrakeTorque": 3000,
+                "maxHandbrakeTorque": 6000,
+                "maxSteerAngle": 50,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 50,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "axis": "Vector(0.000000, 0.000000, -1.000000)",
+                    "dampingRatio": 0.5,
+                    "forceOffset": "Vector(0.000000, 0.000000, 0.000000)",
+                    "maxDrop": 20,
+                    "maxRaise": 20,
+                    "smoothing": 0,
+                    "springPreload": 100,
+                    "springRate": 100,
+                    "wheelLoadRatio": 0.5
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": false,
+                "bone": "PhysWheel_FR",
+                "corneringStiffness": 750,
+                "frictionForceMulti": 4,
+                "maxBrakeTorque": 3000,
+                "maxHandbrakeTorque": 6000,
+                "maxSteerAngle": 50,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 50,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "axis": "Vector(0.000000, 0.000000, -1.000000)",
+                    "dampingRatio": 0.5,
+                    "forceOffset": "Vector(0.000000, 0.000000, 0.000000)",
+                    "maxDrop": 20,
+                    "maxRaise": 20,
+                    "smoothing": 0,
+                    "springPreload": 100,
+                    "springRate": 100,
+                    "wheelLoadRatio": 0.5
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": true,
+                "bone": "PhysWheel_BL",
+                "corneringStiffness": 750,
+                "frictionForceMulti": 4,
+                "maxBrakeTorque": 3000,
+                "maxHandbrakeTorque": 6000,
+                "maxSteerAngle": 0,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 50,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "axis": "Vector(0.000000, 0.000000, -1.000000)",
+                    "dampingRatio": 0.5,
+                    "forceOffset": "Vector(0.000000, 0.000000, 0.000000)",
+                    "maxDrop": 20,
+                    "maxRaise": 20,
+                    "smoothing": 0,
+                    "springPreload": 100,
+                    "springRate": 100,
+                    "wheelLoadRatio": 0.5
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            },
+            {
+                "absEnabled": false,
+                "affectedByBrake": true,
+                "affectedByEngine": true,
+                "affectedByHandbrake": true,
+                "bone": "PhysWheel_BR",
+                "corneringStiffness": 750,
+                "frictionForceMulti": 4,
+                "maxBrakeTorque": 3000,
+                "maxHandbrakeTorque": 6000,
+                "maxSteerAngle": 0,
+                "offset": "Vector(0.000000, 0.000000, 0.000000)",
+                "radius": 50,
+                "sideSlipModifier": 1,
+                "skidThreshold": 20,
+                "slipThreshold": 20,
+                "suspensionSettings": {
+                    "axis": "Vector(0.000000, 0.000000, -1.000000)",
+                    "dampingRatio": 0.5,
+                    "forceOffset": "Vector(0.000000, 0.000000, 0.000000)",
+                    "maxDrop": 20,
+                    "maxRaise": 20,
+                    "smoothing": 0,
+                    "springPreload": 100,
+                    "springRate": 100,
+                    "wheelLoadRatio": 0.5
+                },
+                "tractionControlEnabled": false,
+                "width": 20
+            }
+        ]
+    }
+}
