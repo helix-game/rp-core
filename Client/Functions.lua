@@ -6,6 +6,8 @@ function Core.RegisterHUD(name, location, closeEvent)
     return CreateHUDElement(name, location, closeEvent)
 end
 
+local PromptHUD = Core.RegisterHUD('prompt', 'file://ui/modules/prompt/prompt.html')
+
 function Core.GetHUD(name)
     return Core.HUDList[name]
 end
@@ -17,16 +19,6 @@ end
 function Core.StopAnimation(anim)
     Events.CallRemote('pcrp-core:StopAnimation', anim)
 end
-
-local PromptHUD = Core.RegisterHUD('prompt', 'file://ui/modules/prompt/prompt.html')
-
-
-PromptHUD.Subscribe('interaction:completed', function(key)
-    if not Core.Interactions[key] then return end
-    for k, v in ipairs(Core.RegisteredKeys[key]) do
-        v.onPress(key)
-    end
-end)
 
 function Core.RegisterInput(key, onPress, onRelease)
     if not Core.RegisteredKeys[key] then
@@ -194,46 +186,6 @@ function Core.ScreenFadeIn(ms)
     end, ms)
 end
 
--- function Core.TriggerCallback(name, cb, ...)
---     local p
---     local arg
-
---     if type(cb) == 'function' then
---         arg = { ... }
---         Core.ServerCallbacks[name] = cb
---     else
---         p = promise.new()
---         arg = { cb, ... }
-
---         Core.ServerCallbacks[name] = p
---     end
-
---     Events.CallRemote('ServerTriggerCallback', name, table.unpack(arg))
-    
---     if p ~= nil then
---         Await(p)
---         return p.value
---     end
--- end
-
-
--- function Core.TriggerCallback(name, cb, ...)
---     local p
---     local arg
-
---     if type(cb) == 'function' then
---         arg = { ... }
---         Core.ServerCallbacks[name] = cb
---     else
---         p = promise.new()
---         arg = { cb, ... }
-
---         Core.ServerCallbacks[name] = p
---     end
-
---     Events.CallRemote('ServerTriggerCallback', name, table.unpack(arg))
--- end
-
 function Core.TriggerCallback(name, cb, ...)
     local p
     local arg
@@ -274,10 +226,6 @@ function Core.LinkMarker(name, onEnter, onExit, onUpdate)
     Core.Markers[name].onExit = onExit
     Core.Markers[name].onUpdate = onUpdate
 end
-
-local current_prog_id = nil
-local current_prog_canceled = false
-local current_prog_disabled = nil
 
 function Core.ProgressBar(obj)
     local mainHUD = Core.GetHUD('main');
@@ -322,38 +270,6 @@ function Core.ProgressBar(obj)
         end
     end, 1)
 end
-
-Input.Register("CancelProgress", "BackSpace")
-Input.Bind("CancelProgress", InputEvent.Pressed, function()
-    if (current_prog_id == nil) then return end
-    
-    current_prog_canceled = true
-
-    local mainHUD = Core.GetHUD('main');
-    mainHUD.Call('progressbar:CancelProgress')  
-end)
-
-MovementKeys = {
-    ['W'] = true,
-    ['A'] = true,
-    ['S'] = true,
-    ['D'] = true,
-    ['Space'] = true,
-    ['LeftControl'] = true,
-    ['Z'] = true
-}
-
-Input.Subscribe("KeyDown", function(key_name, delta)
-    if current_prog_id == nil then return end
-    if current_prog_disabled == nil then return end
-
-    if current_prog_disabled.movement then
-        if MovementKeys[key_name] then
-            return false
-        end
-    end
-
-end)
 
 function Core.GetNearestVehicle()
 	local coords = Core.PlayerData.character:GetLocation()
@@ -419,6 +335,6 @@ function Core.CloseInteraction()
     
     InteractionHUD.Focus(false, true)
     InteractionHUD.Call("Interaction:Close")
-    print('close interaction')
+
     Core.InteractionSetup = nil
 end

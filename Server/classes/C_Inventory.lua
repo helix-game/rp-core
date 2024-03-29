@@ -24,7 +24,6 @@ end
 function Core.CreateInventory(name, _type, level, weight, label)
     name = name .. ''
     Core.Inventories[name] = InventoryInitialise(name, _type, level, weight, label)
-    print("INVENTROY CREATED =>", name)
     return Core.Inventories[name]
 end
 
@@ -51,7 +50,6 @@ function InventoryInitialise(name, _type, level, weight, label, coords)
     self.label = label;
     self.slotsActive = 0;
     self.weight = {0, weight or 0}
-
 
     if (_type == 'drop') then
         self.pockets = nil
@@ -434,73 +432,15 @@ function InventoryInitialise(name, _type, level, weight, label, coords)
     return self
 end
 
-function table.compare(t1,t2,ignore_mt)
-    local ty1 = type(t1)
-    local ty2 = type(t2)
-
-    if ty1 ~= ty2 then return false end
-    -- non-table types can be directly compared
-    if ty1 ~= 'table' and ty2 ~= 'table' then return t1 == t2 end
-    -- as well as tables which have the metamethod __eq
-    local mt = getmetatable(t1)
-    if not ignore_mt and mt and mt.__eq then return t1 == t2 end
-    for k1,v1 in pairs(t1) do
-        local v2 = t2[k1]
-        if v2 == nil or not table.compare(v1,v2) then return false end
-    end
-    for k2,v2 in pairs(t2) do
-        local v1 = t1[k2]
-        if v1 == nil or not table.compare(v1,v2) then return false end
-    end
-    return true
-end
-
 Core.CreateCallback('inventory:ValidateMovement', function(player, cb, data)
     local xPlayer = Core.GetPlayerFromId(player:GetID())
 
     local fromSlot = data.fromSlot
     local toSlot = data.toSlot
 
-    -- print("ATTEMPTING TO GRAB INV => ", fromSlot.id)
     local fromInventory = Core.GetInventory(fromSlot.id);
-    -- print(fromInventory)
-    -- local fromSlotNumber = tonumber(fromSlot.slot);
-    
-    -- if toInvType == 'outfit' then
-    --     print(fromInventory, fromSlot, NanosUtils.Dump(fromInventory.GetSlot(fromSlot)))
-    --     return
-    -- end
-    
-    -- Equipment system WIP
-    -- if toInvType == 'equipment' then
-    --     local equipment = xPlayer.equipment
-    --     local fromInvSlot = fromInventory.GetSlot(fromSlot)
-
-    --     if equipment[fromInvSlot.name] == false then
-    --         xPlayer.setEquipment(fromInvSlot.name, true)
-    --     elseif equipment[fromInvSlot.name] ~= nil then
-    --         xPlayer.setEquipment(fromInvSlot.name, false)
-    --     end
-
-    --     return cb(true, { inventory = fromInventory, equipment = xPlayer.equipment })
-    -- end
-    
     local toInventory = Core.GetInventory(toSlot.id);
-    -- local toSlotNumber = tonumber(toSlot.slot);
-    
-    -- The slot is locked
-    -- print("FROM INVENTORY SLOT DATA")
-    -- print(fromSlot, fromInventory.slotAmount)
-    -- if fromSlot > fromInventory.slotAmount then
-    --     return cb(false, { inventory = fromInventory, equipment = xPlayer.equipment })
-    -- end
-    
-    -- print("TO INVENTORY SLOT DATA")
-    -- print(toSlot, toInventory.slotAmount)
-    -- if toSlot > toInventory.slotAmount then
-    --     return cb(false, { inventory = fromInventory, equipment = xPlayer.equipment })
-    -- end
-    print('!!inventory ids!! => ', fromSlot.id, toSlot.id)
+
     if (fromSlot.id == toSlot.id) then
         -- internal inventory swap. i.e swapping items around
         fromInventory.MoveSlot(fromSlot, toSlot);
@@ -617,7 +557,6 @@ Core.CreateCallback('inventory:GetInventory', function(player, cb, other)
     --     xPlayer.setInventoryTarget((other and other.type) or nil)
     -- end
 
-    print(HELIXTable.Dump(xPlayer.inventory))
 
     cb(xPlayer.inventory, otherInventories)
 end)
@@ -653,8 +592,6 @@ Events.SubscribeRemote('inventory:UseInventorySlot', function(player, slot, extr
     local inventory = xPlayer.inventory
 
     slot = tonumber(slot)
-
-    print(slot, extra)
 
     if not inventory[extra][slot] then return end
 
@@ -707,6 +644,16 @@ Events.SubscribeRemote('inventory:GiveItem', function(player, data)
 
     local xPlayer = Core.GetPlayerFromId(player:GetID())
     local xTarget = Core.GetPlayerFromId(data.target)
+
+    local foundItem = xPlayer.inventory.GetItem(itemName, itemSlot)
+    
+    if not foundItem then
+        return
+    end
+
+    if foundItem.count < itemCount then
+        return
+    end
 
     xPlayer.inventory.RemoveItem(itemName, itemCount, nil, itemSlot, itemExtra)
     xTarget.inventory.AddItem(itemName, itemCount)

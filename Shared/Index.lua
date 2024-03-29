@@ -10,11 +10,7 @@ Package.Require("Config/Items.lua")
 Package.Require("Config/Notifications.lua")
 Package.Require("Config/Player.lua")
 Package.Require("Config/Ranks.lua")
--- Package.Require("Config/Taxi.lua")
 Package.Require("Config/Multichar.lua")
--- Package.Require("Config/Fishing.lua")
-Package.Require("Config/SubwayStations.lua")
-Package.Require("Config/VehicleShops.lua")
 Package.Require("Config/SkillTree.lua")
 Package.Require("Config/Vehicles.lua")
 
@@ -51,29 +47,6 @@ Core.VehiclesRegistry = {}
 Core.VehiclesSpawned = {}
 
 Core.ServerCallbacks = {}
-
-
-Core.SubwayStations = {
-    ["Station 1"] = {
-        name = "Station 1",
-        coords = Vector(214.5, -991.90002441406, 98.199996948242),
-        rotation = Rotator(0.0, 180.0, 0.0),
-        travelCost = 10,
-    },
-    ["Station 2"] = {
-        name = "Station 2",
-        coords =  Vector(2546.1999511719, -190.30000305176, 98.199996948242),
-        rotation = Rotator(0.0, 180.0, 0.0),
-        travelCost = 12,
-    },
-    ["Station 3"] = {
-        name = "Station 3",
-        coords =   Vector(3550.6000976562, -140.10000610352, 98.199996948242),
-        rotation = Rotator(0.0, 180.0, 0.0),
-        travelCost = 15,
-    },
-}
-
 
 Core.DeathTimings = CoreCFG.DeathTimings
 Core.Ranks = CoreCFG.Ranks

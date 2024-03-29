@@ -1,4 +1,4 @@
--- Creates a proxy, this essentially makes the table obvserved and every index is serialised
+-- Creates a proxy, this essentially makes the table observed and every index is serialised
 local function CreateProxy(t, a, b)
     return setmetatable({}, {
         __index = function(_, key)
@@ -418,6 +418,14 @@ function CreatePlayerData(player, id, identifier, name, accounts, stats, xp, job
             self.player:SetValue('playerData', self.serialisedVersion, true)
         end
     end
+    
+    function self.addItem(item, count, metadata, slot, extra)
+        self.inventory.AddItem(item, count, metadata, slot, extra)
+    end
+    
+    function self.removeItem(item, count, metadata, slot, extra)
+        self.inventory.RemoveItem(item, count, metadata, slot, extra)
+    end
 
     initialised = true
 
@@ -431,3 +439,10 @@ function CalculateChange(xp, rank)
         end
     end
 end
+
+
+Core.CreateCallback('core:getPlayerData', function(player, cb)
+    local xPlayer = Core.GetPlayerFromId(player:GetID())
+
+    cb(xPlayer.serialisedVersion)
+end)

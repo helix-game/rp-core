@@ -110,81 +110,141 @@
         };
     };
 
-    onMount(() => {
-        let nearbyInventories;
-        let inventoryData = {
-            id: "34",
-            pockets: {
-                "2": {
-                    count: 1,
-                    description:
-                        "The elixir of life, conveniently packaged in a bottle. Guaranteed to make you feel hydrated and environmentally conscious.",
-                    inventoryType: "pockets",
-                    label: "Water Bottle",
-                    name: "water",
-                    rarity: "Common",
-                    slot: 2,
-                    type: "drink",
-                    unique: false,
-                    weight: 0.1,
-                },
-            },
-            slots: [],
-            weight: [0.1, 100],
-        };
+    // onMount(() => {
+    //     let nearbyInventories;
+    //     let inventoryData = {
+    //         id: "34",
+    //         pockets: {
+    //             "2": {
+    //                 count: 1,
+    //                 description:
+    //                     "The elixir of life, conveniently packaged in a bottle. Guaranteed to make you feel hydrated and environmentally conscious.",
+    //                 inventoryType: "pockets",
+    //                 label: "Water Bottle",
+    //                 name: "water",
+    //                 rarity: "Common",
+    //                 slot: 2,
+    //                 type: "drink",
+    //                 unique: false,
+    //                 weight: 0.1,
+    //             },
+    //         },
+    //         slots: [],
+    //         weight: [0.1, 100],
+    //     };
 
-        let source = {
-            name: "Opod",
-            profile:
-                "https://helix-social.s3.amazonaws.com/profile/ab37df1b-982b-4554-9216-a13a292fe2ed.jpeg",
-        };
+    //     let source = {
+    //         name: "Opod",
+    //         profile:
+    //             "https://helix-social.s3.amazonaws.com/profile/ab37df1b-982b-4554-9216-a13a292fe2ed.jpeg",
+    //     };
 
-        let forceOpen = true;
+    //     let forceOpen = true;
 
-        var newInventoryData = {
-            id: inventoryData.id,
-            pockets: parseData(inventoryData.pockets),
-            slots: parseData(inventoryData.slots),
-            label: "Your Inventory",
-            weight: inventoryData.weight,
-            source: source,
-        };
+    //     var newInventoryData = {
+    //         id: inventoryData.id,
+    //         pockets: parseData(inventoryData.pockets),
+    //         slots: parseData(inventoryData.slots),
+    //         label: "Your Inventory",
+    //         weight: inventoryData.weight,
+    //         source: source,
+    //     };
 
-        if ($focusedInventory && nearbyInventories) {
-            nearbyInventories.forEach((x) => {
-                if (x.id == $focusedInventory) {
-                    if (x.pockets) x.pockets = parseData(x?.pockets);
-                    if (x.slots) x.slots = parseData(x?.slots);
+    //     if ($focusedInventory && nearbyInventories) {
+    //         nearbyInventories.forEach((x) => {
+    //             if (x.id == $focusedInventory) {
+    //                 if (x.pockets) x.pockets = parseData(x?.pockets);
+    //                 if (x.slots) x.slots = parseData(x?.slots);
 
-                    otherInventoryData.set(x);
-                    return;
-                }
-            });
-        }
+    //                 otherInventoryData.set(x);
+    //                 return;
+    //             }
+    //         });
+    //     }
 
-        if (forceOpen) {
-            focusedInventory.set(null);
-            if (nearbyInventories) {
-                inventoriesNearby = nearbyInventories;
-                inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
-            } else {
-                inventory_state.set(INVENTORY_STATES.PERSONAL_INVENTORY);
-            }
-        } else {
-            if (
-                nearbyInventories &&
-                $inventory_state !== INVENTORY_STATES.OTHER_INVENTORY
-            ) {
-                inventoriesNearby = nearbyInventories;
-                inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
-            } else if (!nearbyInventories) {
-                inventory_state.set(INVENTORY_STATES.PERSONAL_INVENTORY);
-            }
-        }
+    //     if (forceOpen) {
+    //         focusedInventory.set(null);
+    //         if (nearbyInventories) {
+    //             inventoriesNearby = nearbyInventories;
+    //             inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
+    //         } else {
+    //             inventory_state.set(INVENTORY_STATES.PERSONAL_INVENTORY);
+    //         }
+    //     } else {
+    //         if (
+    //             nearbyInventories &&
+    //             $inventory_state !== INVENTORY_STATES.OTHER_INVENTORY
+    //         ) {
+    //             inventoriesNearby = nearbyInventories;
+    //             inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
+    //         } else if (!nearbyInventories) {
+    //             inventory_state.set(INVENTORY_STATES.PERSONAL_INVENTORY);
+    //         }
+    //     }
 
-        inventory_data.set(newInventoryData);
-        inventory_visible.set(true);
-    });
+    //     inventory_data.set(newInventoryData);
+    //     inventory_visible.set(true);
+    // });
+
+    // onMount(() => {
+    //     let inventoryData = {
+    //         "id": "48",
+    //         "pockets": [],
+    //         "slots": [],
+    //         "weight": [
+    //             0,
+    //             100
+    //         ]
+    //     }
+        
+    //     var newInventoryData = {
+    //         id: inventoryData.id,
+    //         pockets: parseData(inventoryData.pockets),
+    //         slots: parseData(inventoryData.slots),
+    //         label: "Your Inventory",
+    //         weight: inventoryData.weight,
+    //         source: source,
+    //     };
+
+    //     if ($focusedInventory && nearbyInventories) {
+    //         nearbyInventories.forEach((x) => {
+    //             if (x.id == $focusedInventory) {
+    //                 if (x.pockets) x.pockets = parseData(x?.pockets);
+    //                 if (x.slots) x.slots = parseData(x?.slots);
+
+    //                 otherInventoryData.set(x);
+    //                 return;
+    //             }
+    //         });
+    //     }
+
+    //     if (forceOpen) {
+    //         focusedInventory.set(null);
+    //         if (nearbyInventories) {
+    //             inventoriesNearby = nearbyInventories;
+    //             inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
+    //         } else {
+    //             inventory_state.set(
+    //                 INVENTORY_STATES.PERSONAL_INVENTORY,
+    //             );
+    //         }
+    //     } else {
+    //         if (
+    //             nearbyInventories &&
+    //             $inventory_state !== INVENTORY_STATES.OTHER_INVENTORY
+    //         ) {
+    //             inventoriesNearby = nearbyInventories;
+    //             inventory_state.set(INVENTORY_STATES.INVENTORY_BROWSE);
+    //         } else if (!nearbyInventories) {
+    //             inventory_state.set(
+    //                 INVENTORY_STATES.PERSONAL_INVENTORY,
+    //             );
+    //         }
+    //     }
+
+    //     inventory_data.set(newInventoryData);
+    //     inventory_visible.set(true);
+    // })
 
     if (typeof Events !== "undefined") {
         Events.Subscribe(

@@ -280,9 +280,3 @@ Input.Subscribe("KeyUp", function(key_name, delta)
     keysPressed[key_name] = nil
     keysReleased[key_name] = time()
 end)
-
-function table.wipe(tbl)
-    for key in next, tbl do
-        tbl[key] = nil
-    end
-end

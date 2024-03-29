@@ -1,4 +1,4 @@
-local multichar_ui = Core.RegisterHUD('multicharacter', 'file://ui/modules/multicharacter/multicharacter.html')
+local multichar_ui = Core.RegisterHUD('multicharacter', 'file://ui/modules/multicharacter/build/index.html')
 
 local active_camera = false
 local multichar_small_room
@@ -31,11 +31,14 @@ Events.SubscribeRemote('pcrp-core:MulticharacterSetup', function(characterData)
             newData[k].date_of_birth = v.birthdate
         end
         characterData.characters = newData
-    end    
+    else
+        characterData.characters = {}
+    end
     
     Client.SetValue('isBusy', true)
     Core.HideHUD()
-    multichar_ui.Call('Multichar:Init', { nationalities = CoreCFG.Nationalities, characterData = characterData})
+
+    multichar_ui.Call('Initialise', { nationalities = CoreCFG.Nationalities, characterData = characterData })
 end)
 
 Events.SubscribeRemote('multichar:SetupRoom', function(platformPos)
@@ -75,6 +78,7 @@ Events.SubscribeRemote('multichar:SetupRoom', function(platformPos)
 end)
 
 Events.SubscribeRemote('multicharacter:RemoveRoom', function()
+    print("TRYING TO REMOVE ROOM")
     multichar_small_room:Destroy()
     multichar_small_room = nil
     multichar_platform:Destroy()
@@ -82,8 +86,7 @@ Events.SubscribeRemote('multicharacter:RemoveRoom', function()
 
 	active_camera = false
 
-    multichar_ui.RemoveHUD()
-    
+    multichar_ui.RemoveHUD()    
     
     Sky.SetAnimateTimeOfDay(true)
 end)
@@ -98,25 +101,6 @@ function RemoveRoom()
     
     Sky.SetAnimateTimeOfDay(true)
 end
-
-
-Input.Subscribe("KeyDown", function(key_name)
-    if key_name ~= '`' and active_camera then
-        return false
-    end
-end)
-
-Input.Subscribe("MouseMoveX", function(delta, delta_time, num_samples)
-    if active_camera then
-        return false
-    end
-end)
-
-Input.Subscribe("MouseMoveY", function(delta, delta_time, num_samples)
-    if active_camera then
-        return false
-    end
-end)
 
 function ValidateInformation(character_data)
     local first_name = character_data.first_name
@@ -146,20 +130,21 @@ function ValidateInformation(character_data)
     end
 end
 
-multichar_ui.Subscribe('multicharacter:ChangeGender', function(isMale)
+multichar_ui.Subscribe('CHANGE_GENDER', function(isMale)
     Events.CallRemote('multicharacter:ChangeGender', isMale)
 end)
+
 -- This event will send a request to readjust the character for the new menu
-multichar_ui.Subscribe('multicharacter:CreateCharacter', function()
+multichar_ui.Subscribe('CREATE_CHARACTER_CAMERA', function()
     Events.CallRemote('multicharacter:AdjustCamera', Vector(20, -30, 50), true)
 end)
 
 -- This event will send a request to readjust the character for the new menu
-multichar_ui.Subscribe('multicharacter:ChooseCharacter', function()
+multichar_ui.Subscribe('CHOOSE_CHARACTER_CAMERA', function()
     Events.CallRemote('multicharacter:AdjustCamera', Vector(0, 0, 30), false)
 end)
 
-multichar_ui.Subscribe('multicharacter:SaveCharacter', function(character_data)
+multichar_ui.Subscribe('CREATE_CHARACTER', function(character_data)
     local validateInformation = ValidateInformation(character_data)
 
     if (validateInformation ~= nil) then
@@ -171,7 +156,7 @@ multichar_ui.Subscribe('multicharacter:SaveCharacter', function(character_data)
     Client.SetValue('isBusy', false)
 end)
 
-multichar_ui.Subscribe('multicharacter:SelectCharacter', function(cid)
+multichar_ui.Subscribe('CHOOSE_CHARACTER', function(cid)
     Client.SetValue('isBusy', false)
     Events.CallRemote('multicharacter:SelectCharacter', cid)
 end)

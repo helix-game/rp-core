@@ -120,7 +120,6 @@ function RemoveItem(data)
 end
 
 function GiveItem(data)
-    print(HELIXTable.Dump(data))
     Events.CallRemote('inventory:GiveItem', data)
     OpenInventory()
 end

@@ -52,6 +52,6 @@ export const useOptimisationMode = writable(true)
     
 export const otherInventoryData = writable()
 
-export const inventory_visible = writable(true);
+export const inventory_visible = writable(false);
 
 export const inventory_state = writable(INVENTORY_STATES.PERSONAL_INVENTORY);

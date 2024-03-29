@@ -12,7 +12,12 @@ Events.SubscribeRemote('core:UpdateAccountMoney', function(account, value)
     HUD.Call("helix-hud:UpdateAccountMoney", account, value)
 end)
 
-Events.SubscribeRemote('core:playerSpawned', function()
+Events.SubscribeRemote('core:playerSpawned', function(playerData)
+    
+    if not Core.PlayerData then
+        Core.PlayerData = playerData
+    end
+
     HUD.Call("helix-hud:UpdatePlayers", Player.GetCount())
     HUD.Call("helix-hud:UpdateServerId", Core.PlayerData.player:GetID())
 end)
@@ -20,6 +25,10 @@ end)
 -- Player joined server alerts all players when a new player joins
 Events.SubscribeRemote('core:playerJoinedServer', function()
     HUD.Call("helix-hud:UpdatePlayers", Player.GetCount())
+end)
+
+Player.Subscribe("VOIP", function(self, is_talking)
+    HUD.Call('helix-hud:UpdateVOIP', 'voip', is_talking)
 end)
 
 Client.Subscribe("Tick", function(delta_time)

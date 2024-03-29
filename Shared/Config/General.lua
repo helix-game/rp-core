@@ -1,5 +1,7 @@
 CoreCFG = {}
 
+CoreCFG.Debug = true -- enables /debug command
+
 CoreCFG.DeathTimings = {
     LastStand = 4,
     AutoRespawn = 4,

@@ -1,5 +1,3 @@
-
-CoreCFG.Debug = true -- enables /debug command
 CoreCFG.Ranks = {
     ["unemployed"] = {
         [1] = { 

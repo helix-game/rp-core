@@ -214,7 +214,7 @@ Events.SubscribeRemote('multicharacter:SelectCharacter', function(player, cid)
         char:SetLocation(Vector(0, 0, 1000))
         char:SetCapsuleSize(20, 92)
 
-        Events.CallRemote('core:playerSpawned', player)
+        Events.CallRemote('core:playerSpawned', player, Core.Players[player:GetID()].serialisedVersion)
         Events.Call('core:playerSpawned', player)
         Events.BroadcastRemote('core:playerJoinedServer', player)
         
@@ -275,20 +275,21 @@ Events.SubscribeRemote('multicharacter:SaveCharacter', function(player, characte
 
         -- Subscribe to Death event
         char:Subscribe("Death", OnPlayerCharacterDeath)
-
+        
         -- Unsubscribe to Death event if unpossessed (in case we got possessed into another Character)
         char:Subscribe("UnPossess", function(self)
             self:Unsubscribe("Death", OnPlayerCharacterDeath)
         end)
-
+        
         player:SetCameraSocketOffset(Vector())
-
+        
         char:SetGravityEnabled(true)
-
+        
         --char:SetFlyingMode(false)
         --char:SetInputEnabled(true)
-
-
+        
+        
+        Events.CallRemote("multicharacter:RemoveRoom", player)
         Events.CallRemote("pcrp-core:SpawnMenu", player, true)
 
         char:SetLocation(Vector())
@@ -296,8 +297,11 @@ Events.SubscribeRemote('multicharacter:SaveCharacter', function(player, characte
 end)
 
 Events.SubscribeRemote('multicharacter:ChangeGender', function(player, isMale)
+    print("CHANIGN GENDER", isMale)
+    print('test 1')
     if not PlayersSelecting[player] then return end
-
+    
+    print('test 2')
     local char = PlayersSelecting[player].char
 
 --[[     char:RemoveAllSkeletalMeshesAttached()

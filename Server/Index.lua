@@ -1,3 +1,4 @@
+Package.Require('/Server/Utils.lua')
 Package.Require('/Server/Functions.lua')
 
 Package.Require('/Server/modules/Database.lua')
@@ -19,7 +20,7 @@ Package.Require('/Server/modules/DailyRewards.lua')
 Package.Require('/Server/modules/Commands.lua')
 Package.Require('/Server/modules/SpawnMenu.lua')
 Package.Require('/Server/modules/VehicleHUD.lua')
-Package.Require('/Server/modules/SkillTree.lua')
+-- Package.Require('/Server/modules/SkillTree.lua')
 Package.Require('/Server/Caching.lua')
 
 -- Package.Require('/Server/modules/jobs/TaxiJob.lua')
@@ -120,7 +121,7 @@ function OnPlayerReady(player)
 		self:Unsubscribe("Death", OnPlayerCharacterDeath)
 	end)	
 
-	Events.CallRemote('core:playerSpawned', player)
+	Events.CallRemote('core:playerSpawned', player, Core.Players[player:GetID()].serialisedVersion)
 	Events.Call('core:playerSpawned', player)
 	Events.BroadcastRemote('core:playerJoinedServer', player)
 end
@@ -218,19 +219,20 @@ Player.Subscribe('Destroy', OnPlayerLeave)
 Player.Subscribe("Possess", OnPlayerPossess)
 Player.Subscribe("Unpossess", OnPlayerUnpossess)
 
-
 PlayerStatusTimer = Timer.SetInterval(function()
-	for k, v in pairs(Core.Players) do
-		if HELIXUtils.IsEntityValid(v.player) then
-			local hunger = v.getStat('hunger')
-			local thirst = v.getStat('thirst')
-			
-			hunger.RemoveValue(1)
-			thirst.RemoveValue(1)
-			
-			v.call("core:onStatusTick", { hunger.Serialise(), thirst.Serialise() })
-		else
-			Core.Players[k] = nil
+	if Core.Players then
+		for k, v in pairs(Core.Players) do
+			if HELIXUtils.IsEntityValid(v.player) then
+				local hunger = v.getStat('hunger')
+				local thirst = v.getStat('thirst')
+				
+				hunger.RemoveValue(1)
+				thirst.RemoveValue(1)
+				
+				v.call("core:onStatusTick", { hunger.Serialise(), thirst.Serialise() })
+			else
+				Core.Players[k] = nil
+			end
 		end
 	end
 end, 5000)

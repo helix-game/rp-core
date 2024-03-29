@@ -1,11 +1,3 @@
--- CoreCFG.StartingApartment = true -- Enable/disable starting apartments (make sure to set default spawn coords)
--- CoreCFG.Interior = Vector(-814.89, 181.95, 76.85) -- Interior to load where characters are previewed
--- CoreCFG.DefaultSpawn = Vector(-1035.71, -2731.87, 12.86) -- Default spawn coords if you have start apartments disabled
--- --Spawnstation
--- CoreCFG.PedCoords = Vector(-3962.103, 2013.484, 500.91) -- Create preview ped at these coordinates
--- CoreCFG.HiddenCoords = Vector(-3968.355, 2005.308, 500.91) -- Hides your actual ped while you are in selection
--- CoreCFG.CamCoords = Vector(-3963.967, 2014.232, 500.91) -- Camera coordinates for character preview screen
-
 -- CoreCFG.MaxChars = 3 -- Max characters per player
 
 CoreCFG.MulticharEnabled = true
