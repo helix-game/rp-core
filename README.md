@@ -21,11 +21,10 @@ To get started with this project, follow these steps:
 
 1. Clone this repository.
 2. Install dependencies using `npm install` or `yarn install`.
-3. [Add any specific additional steps here, if applicable]
 
 ## Support and Updates
 
-We are committed to supporting and updating this project regularly. If you encounter any issues or have suggestions for improvement, please don't hesitate to [create an issue](link to issue tracker) or [submit a pull request](link to contribution guidelines). We appreciate your feedback and contributions!
+We are committed to supporting and updating this project regularly. If you encounter any issues or have suggestions for improvement, please don't hesitate to [create an issue] or [submit a pull request]. We appreciate your feedback and contributions!
 
 ## Documentation
 
