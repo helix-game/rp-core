@@ -30,6 +30,8 @@ We are committed to supporting and updating this project regularly. If you encou
 
 **Note**: Documentation for this framework is a work in progress (WIP). We are actively working on it and will update it soon. In the meantime, if you have any questions, feel free to refer to the codebase and comments for guidance.
 
+[Find the Documentation here](https://rp-docs-kohl.vercel.app/)
+
 ## Contributing
 
 We welcome contributions from the community, feel free to contribute or suggest features that you would love to see implemented!
