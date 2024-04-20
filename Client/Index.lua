@@ -247,27 +247,27 @@ current_prog_id = nil
 current_prog_canceled = false
 current_prog_disabled = nil
 
-if CoreCFG.Debug then
-    local DEBUG_COORDS = Canvas(
-        true,
-        Color.TRANSPARENT,
-        0,
-        true
-      )
+if CoreCFG.Debug then -- removed due canva bug (white screen)
+    -- local DEBUG_COORDS = Canvas(
+    --     true,
+    --     Color.TRANSPARENT,
+    --     0,
+    --     true
+    --   )
       
-    -- Subscribes for Update, we can only Draw inside this event
-    DEBUG_COORDS:Subscribe("Update", function(self, width, height)
-        local player = Client.GetLocalPlayer()
-        if not player then return end
-        player = player:GetCameraLocation()
+    -- -- Subscribes for Update, we can only Draw inside this event
+    -- DEBUG_COORDS:Subscribe("Update", function(self, width, height)
+    --     local player = Client.GetLocalPlayer()
+    --     if not player then return end
+    --     player = player:GetCameraLocation()
     
-        local str = "X = " .. player.X .. ", Y = " .. player.Y .. ", Z = " .. player.Z
-        -- Draws a Text in the middle of the screen
-        self:DrawText(str, Vector2D(width * 0.5, height * 0.15))
-    end)
+    --     local str = "X = " .. player.X .. ", Y = " .. player.Y .. ", Z = " .. player.Z
+    --     -- Draws a Text in the middle of the screen
+    --     self:DrawText(str, Vector2D(width * 0.5, height * 0.15))
+    -- end)
     
-    Console.Subscribe("LogEntry", function(text, type)
-        -- LogEntry was called
-        Chat.AddMessage(text)
-    end)
+    -- Console.Subscribe("LogEntry", function(text, type)
+    --     -- LogEntry was called
+    --     Chat.AddMessage(text)
+    -- end)
 end
